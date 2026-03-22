@@ -1,0 +1,2779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://raw.githubusercontent.com/AlonsoAliaga/sign-generator/main/assets/images/icon.png" type="image/png">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlonsoAliaga/sign-generator/main/assets/images/icon.png" type="image/png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ASCII Sign Generator | AlonsoAliaga Development</title>
+
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <meta name="theme-color" content="#9a14ff"/>
+    <meta property="og:title" content="ASCII Sign Generator | AlonsoAliaga Development">
+    <meta property="og:key" content="ASCII Sign Generator | AlonsoAliaga Development">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AlonsoAliaga/sign-generator/main/assets/images/logo.png">
+    <meta property="og:description" content="Create signs in game with big letters!&#10;&#13;Many options and features available.&#10;&#13;Designed for builders and users!">
+    <meta property="description" content="Create signs in game with big letters!&#10;&#13;Many options and features available.&#10;&#13;Designed for builders and users!">
+    <meta name="og:keywords" content="ascii, sign, alonsoaliaga, color, hex, replace, bulk, mcpfp, banner, generator, minecraft, bungeecord, paper, spigot, plugins, html, css, javascript, java, hex, rgb, generator, alonsoaliaga.github.io, alonsoaliaga.com, Minecraft hex generator,Minecraft hex color tool,gradient generator for Minecraft,Minecraft text gradient tool,Minecraft color presets,MiniMessage hex generator,Minecraft gradient maker,Minecraft chat colors,Minecraft hex syntax,Minecraft color codes,PlaceholderAPI hex,Minecraft hex presets,Minecraft gradient builder,Minecraft gradient preview,Minecraft RGB text,hex decode tool for Minecraft,decode hex gradient,color string decoder,convert hex to gradient,chat gradient editor,Minecraft scoreboard color,Minecraft tablist color,custom gradient chat,Minecraft RGB codes,Minecraft formatting tool,Minecraft color string parser,save gradient for Minecraft,load Minecraft hex gradient,Minecraft font color manager,Minecraft plugin dev tool,Minecraft text colorizer,custom rank color,Minecraft prefix gradient,color formatting for plugins,Minecraft hex tag tool,chat message colorizer,Minecraft plugin utility,MiniMessage color preview,Minecraft rank color generator,Minecraft name color generator,LuckPerms hex colors,chat hex formatting,PlaceholderAPI gradient plugin,ItemsAdder hex colors,Oraxen chat gradient,Minecraft UI gradient,Minecraft hex font preview,font color formatting,text color generator Minecraft,color string saver Minecraft,color gradient visualizer,Minecraft gradient editor,creador de degradados Minecraft,generador de colores hex Minecraft,formato hex para Minecraft,gradiente de colores en Minecraft,personalizar texto Minecraft,colores en scoreboard,colores en tablist,editar color de texto Minecraft,plugin de colores para Minecraft,códigos de color Minecraft,personalizar rangos con color,generador de texto RGB,guardar degradado Minecraft,importar colores hex,Minecraft español,crear degradado visual,Minecraft herramienta de color,herramienta para desarrolladores de plugins,formato MiniMessage en español,degradados en plugins,color personalizado para jugadores">
+    <meta name="keywords" content="ascii, sign, alonsoaliaga, color, hex, replace, bulk, mcpfp, banner, generator, minecraft, bungeecord, spigot, paper, plugins, html, css, javascript, java, hex, rgb, generator, alonsoaliaga.github.io, alonsoaliaga.com, Minecraft hex generator,Minecraft hex color tool,gradient generator for Minecraft,Minecraft text gradient tool,Minecraft color presets,MiniMessage hex generator,Minecraft gradient maker,Minecraft chat colors,Minecraft hex syntax,Minecraft color codes,PlaceholderAPI hex,Minecraft hex presets,Minecraft gradient builder,Minecraft gradient preview,Minecraft RGB text,hex decode tool for Minecraft,decode hex gradient,color string decoder,convert hex to gradient,chat gradient editor,Minecraft scoreboard color,Minecraft tablist color,custom gradient chat,Minecraft RGB codes,Minecraft formatting tool,Minecraft color string parser,save gradient for Minecraft,load Minecraft hex gradient,Minecraft font color manager,Minecraft plugin dev tool,Minecraft text colorizer,custom rank color,Minecraft prefix gradient,color formatting for plugins,Minecraft hex tag tool,chat message colorizer,Minecraft plugin utility,MiniMessage color preview,Minecraft rank color generator,Minecraft name color generator,LuckPerms hex colors,chat hex formatting,PlaceholderAPI gradient plugin,ItemsAdder hex colors,Oraxen chat gradient,Minecraft UI gradient,Minecraft hex font preview,font color formatting,text color generator Minecraft,color string saver Minecraft,color gradient visualizer,Minecraft gradient editor,creador de degradados Minecraft,generador de colores hex Minecraft,formato hex para Minecraft,gradiente de colores en Minecraft,personalizar texto Minecraft,colores en scoreboard,colores en tablist,editar color de texto Minecraft,plugin de colores para Minecraft,códigos de color Minecraft,personalizar rangos con color,generador de texto RGB,guardar degradado Minecraft,importar colores hex,Minecraft español,crear degradado visual,Minecraft herramienta de color,herramienta para desarrolladores de plugins,formato MiniMessage en español,degradados en plugins,color personalizado para jugadores">
+    <meta property="og:url" content="https://alonsoaliaga.github.io/index.html">
+    <meta property="og:site_name" content="ASCII Sign Generator - AlonsoAliaga Development" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* FONTS */
+        @font-face {
+            font-family: MinecraftRegular;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/fonts/MinecraftRegular.otf);
+        }
+        @font-face {
+            font-family: MinecraftBold;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/fonts/MinecraftBold.otf);
+        }
+
+        /* Color Palette */
+        :root {
+            /* Light Mode */
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #aaa;
+            
+            --btn-bg: #f8fdc9; 
+            --btn-border: #333333;
+            --btn-text: #272727;
+            
+            --input-bg: #ffffff;
+            --input-border: #cccccc;
+            --input-text: #000000;
+            --link-color: #5555FF;
+
+            /* Canvas Background Light */
+            --canvas-gradient-start: #f5f5f5;
+            --canvas-gradient-end: #dcdcdc;
+            
+            --container-bg: #f9f9f9;
+            --showcase-border: silver;
+        }
+
+        body.dark-mode {
+            /* Dark Mode */
+            --bg-color: #1c1c1c; 
+            --text-color: #d0d0d0;
+            --border-color: #555;
+
+            --btn-bg: #ffd5f2; 
+            --btn-border: #25172f;
+            --btn-text: #272727; 
+            
+            --input-bg: #e4d2de;
+            --input-border: #43245c;
+            --input-text: #272727;
+            --link-color: #5555FF;
+
+            /* Canvas Background Dark */
+            --canvas-gradient-start: #2a2a2a;
+            --canvas-gradient-end: #1a1a1a;
+            
+            --container-bg: #111;
+            --showcase-border: #555; 
+        }
+
+        body { 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'MinecraftRegular', sans-serif;
+            overflow-x: hidden;
+            margin: auto;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Rainbow Text */
+        .rainbow {
+            background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow_animation 2s ease-in-out infinite;
+            background-size: 400% 100%;
+            font-family: 'MinecraftBold', sans-serif;
+        }
+        @keyframes rainbow_animation {
+            0%,100% { background-position: 0 0; }
+            50% { background-position: 100% 0; }
+        }
+
+        /* Top Notification Bar */
+        #online-counter {
+            width: 100%;
+            background-color: #00aa00; 
+            color: white;
+            text-align: center;
+            padding: 4px;
+            font-size: 16px;
+            text-shadow: 1px 1px 0 #000;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            min-height: 32px;
+        }
+
+        /* Warning Text */
+        .warning-text {
+            color: #FF5555; 
+            font-size: 15px;
+            text-shadow: 1px 1px 0 #000;
+            margin-bottom: 10px;
+            font-family: 'MinecraftBold';
+            margin-top: 5px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Description Box */
+        .description-box {
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            padding: 5px 20px;
+            background-color: transparent;
+            max-width: 950px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+            position: relative;
+        }
+
+        /* Titles */
+        .main-title {
+            font-size: 40px;
+            margin-bottom: 2px;
+            text-decoration: none;
+            color: #5555FF;
+            text-shadow: 2px 2px 0 #000;
+            font-family: 'MinecraftBold';
+        }
+        .main-title span { color: #ffffff; }
+
+        /* Custom Button Style */
+        .btn-custom {
+            font-family: 'MinecraftRegular';
+            border-radius: 25px;
+            border-color: var(--btn-border);
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border-style: solid;
+            border-width: 2px;
+            padding: 4px 12px; 
+            cursor: pointer;
+            font-size: 14px; 
+            transition: transform 0.1s, filter 0.2s;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 28px; 
+        }
+        .btn-custom:active { transform: translate(2px, 2px); box-shadow: none; }
+        .btn-custom:disabled {
+            filter: grayscale(100%);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .btn-custom input[type="checkbox"] { 
+            accent-color: #ff3399; 
+            width: 14px; 
+            height: 14px; 
+            cursor: pointer;
+        }
+
+        /* Input Style */
+        .input-custom {
+            font-family: 'MinecraftRegular';
+            background-color: var(--input-bg);
+            border-color: var(--input-border);
+            color: var(--input-text);
+            border-style: solid;
+            border-width: 2px; 
+            border-radius: 10px; 
+            padding: 4px 8px; 
+            font-size: 14px;
+            text-align: center;
+            height: 28px;
+        }
+        .input-custom:focus { outline: none; }
+        .input-custom:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            width: 95%; 
+            max-width: 1600px;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 10px;
+        }
+        .ad-space { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; }
+        
+        /* App Container */
+        .app-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; 
+        }
+
+        /* Canvas Box - UPDATED (Removed Border/Bg) */
+        .canvas-box {
+            flex-grow: 1;
+            /* Removed border and background as requested */
+            border: none; 
+            background: transparent;
+            height: auto; 
+            min-height: 200px; 
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        /* ----- SIGN SPECIFIC STYLES ----- */
+        .sign-wrapper {
+            background-image: url('../assets/letters/space.png');
+            /* background-image: url('https://i.imgur.com/UZVlCEP.png'); */
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            width: 250px;
+            height: 125px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            margin-bottom: 8px;
+            position: relative; /* Added for absolute positioning of char label */
+        }
+        
+        .sign-wrapper:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        /* Character Label Style */
+        .sign-char-label {
+            position: absolute;
+            top: 6px;
+            left: 12px;
+            font-family: 'MinecraftBold', sans-serif;
+            font-size: 14px;
+            color: #ffffff;
+            text-shadow: 1px 1px 0 #000;
+            z-index: 5;
+            pointer-events: none; /* Allows clicking through to the sign if needed */
+            opacity: 0.7;
+        }
+
+        .sign-text-container {
+            width: 80%;
+            height: 65%; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            margin-top: -24px; 
+        }
+
+        .sign-line {
+            font-family: monospace; 
+            font-size: 22px; 
+            white-space: pre;
+            color: #000000;
+            line-height: 1;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            user-select: none;
+            font-weight: bold;
+            padding: 1px 0;
+            min-height: 22px; 
+        }
+        
+        @media (min-width: 1200px) {
+            .sign-wrapper {
+                width: 250px;
+                height: 125px;
+            }
+            .sign-line {
+                font-size: 24px; 
+                min-height: 24px;
+            }
+        }
+
+        .sign-line:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            outline: 1px dashed rgba(0,0,0,0.3);
+        }
+        
+        .sign-line:active {
+            transform: scale(0.95);
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+
+        /* In-Game Preview Image Styles */
+        .ingame-preview-img {
+            height: 100px;
+            width: auto;
+            transition: transform 0.2s;
+            image-rendering: pixelated;
+        }
+        .ingame-preview-img:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        /* Dye Selector Styles */
+        .dye-selector-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 5px;
+            align-items: center;
+            min-height: 83px; /* Added min-height as requested */
+        }
+        .dye-btn {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: var(--input-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        .dye-btn:hover {
+            transform: scale(1.1);
+        }
+        .dye-btn.active {
+            border-color: #55ff55;
+            box-shadow: 0 0 8px #55ff55;
+            background-color: rgba(85, 255, 85, 0.2);
+        }
+        .dye-btn img {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+        }
+        
+        /* Glow Button Specifics */
+        .glow-btn {
+            width: 48px;
+            height: 48px;
+            border: 2px solid #FFAA00; /* Orange border for glow item */
+            border-radius: 50%; /* Circle to distinguish */
+            cursor: pointer;
+            background-color: var(--input-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+            margin-left: 15px; /* Separate from dyes */
+            position: relative;
+        }
+        .glow-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #FFAA00;
+        }
+        .glow-btn.active {
+            background-color: #FFFFAA;
+            box-shadow: 0 0 15px #FFAA00, inset 0 0 10px #FFAA00;
+            border-color: #FFFF55;
+        }
+        .glow-btn::after {
+            content: "GLOW";
+            position: absolute;
+            bottom: -18px;
+            font-size: 10px;
+            font-family: 'MinecraftBold';
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* AdBlock Overlay Styles */
+        .blocked-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.4);
+            z-index: 50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            flex-direction: column;
+            color: white;
+            font-family: 'MinecraftBold';
+            text-shadow: 2px 2px 0 #000;
+            text-align: center;
+            font-size: 18px;
+            backdrop-filter: blur(2px);
+            user-select: none;
+        }
+
+        .blocked-overlay.darker {
+            background-color: rgba(100, 0, 0, 0.85); /* Darker red for ingame preview */
+        }
+
+        /* Custom Copy Popup Animation */
+        #copy-notification {
+            position: fixed;
+            bottom: -60px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #222;
+            color: #55ff55;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-family: 'MinecraftBold';
+            border: 2px solid #55ff55;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .animate-popup {
+            animation: slideUpFade 2s ease-in-out forwards;
+        }
+
+        @keyframes slideUpFade {
+            0% { bottom: -60px; opacity: 0; }
+            15% { bottom: 80px; opacity: 1; }
+            85% { bottom: 80px; opacity: 1; }
+            100% { bottom: -60px; opacity: 0; }
+        }
+
+        /* Sidebar & Fieldsets */
+        .sidebar { width: 340px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; }
+
+        fieldset {
+            border: 2px solid var(--border-color); 
+            border-radius: 20px;
+            padding: 10px 15px 15px 15px;
+            margin-top: 2px;
+            background: transparent;
+            position: relative; 
+        }
+        
+        legend {
+            text-align: center;
+            padding: 0 5px; 
+            font-size: 14px;
+            color: var(--text-color);
+            font-family: 'MinecraftBold';
+        }
+
+        /* Showcase Styles FIXED */
+        .showcase-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 5px; 
+            flex-wrap: nowrap;
+            width: 100%;
+            max-width: 100%;
+        }
+        .showcase-box {
+            border: 2px solid var(--showcase-border);
+            padding: 0;
+            width: 32%;
+            border-radius: 0; 
+            display: flex;
+            justify-content: center;
+            background: transparent;
+            flex-direction: column; 
+            align-items: center;
+        }
+        .showcase-legend {
+            text-align: center;
+            width: 95%; 
+            padding: 0 5px 5px 5px;
+            font-family: 'MinecraftBold';
+            font-size: 14px;
+            color: var(--text-color);
+            margin: auto; 
+            line-height: 1.2;
+            background-color: var(--bg-color); 
+        }
+        .showcase-img {
+            height: 200px;
+            width: auto;
+            max-width: 100%;
+            cursor: pointer;
+            border-radius: 0 0 8px 8px;
+            transition: transform 0.2s;
+            margin-bottom: 0px;
+            object-fit: contain; 
+        }
+        .showcase-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Options/Examples Box Style */
+        .options {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .examples {
+            width: 100%;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        /* Links in tools section */
+        #tools-for-you a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        #tools-for-you a:hover {
+            color: #FFFF55;
+            text-decoration: none;
+        }
+        #tools-for-you span.rainbow {
+            display: inline-block;
+        }
+        #tools-for-you span.rainbow a {
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Floating Button CSS */
+        #mybutton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 0;
+            border: none;
+            background: none;
+            font-family: MinecraftRegular;
+            z-index: 9999;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #mybutton:hover {
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .floating-icon {
+            width: 96px; 
+            height: auto;
+            image-rendering: pixelated;
+            filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.5));
+            cursor: pointer;
+        }
+
+        #visitor-counter {
+            margin-top: -5px;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        #counter-amount {
+            color: white;
+            font-size: 12px;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        /* Error Popup Style */
+        .error-popup {
+            position: fixed;
+            bottom: -100px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #500000; 
+            border: 2px solid #ff5555; 
+            color: white;
+            padding: 10px 20px;
+            font-family: 'MinecraftRegular';
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.5); 
+            z-index: 9999; 
+            transition: bottom 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28); 
+            border-radius: 4px;
+            pointer-events: none; 
+        }
+        .error-popup.show {
+            bottom: 40px; 
+        }
+
+        @media (max-width: 850px) {
+            .content-row { flex-direction: column; }
+            .canvas-box { height: auto; width: 100%; min-height: 200px; }
+            .sidebar { width: 100%; }
+            .ad-space { display: none; }
+            .showcase-container { flex-wrap: wrap; }
+            .showcase-box { width: 100%; }
+            #mybutton { display: none; } 
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Notification Bar -->
+    <div id="online-counter" style="display:none;"></div>
+    
+    <!-- Title -->
+    <div class="text-center mt-2">
+        <a href="#" class="main-title block rainbow">
+            ASCII Sign <span>Generator</span>
+        </a>
+    </div>
+    <div class="profile_auth" data-max-width="750px" data-max-height="120px"></div>
+
+    <!-- Separator Line -->
+    <hr style="width: 100%; max-width: 900px;border-color: #888; margin-bottom: 5px;">
+
+    <!-- Warning Bar -->
+    <div class="warning-text">
+        Use Google Chrome or Opera for a better experience. Edge is reported as not compatible!
+    </div>
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Be respectful, do not steal my work. -->
+    <!-- Description Box -->
+    <div class="description-box">
+        <p class="rainbow font-bold mb-2 text-xl" style="display:inline-block;">Why using our generator?</p>
+        <p>
+            Well, there isn't any other generator out there as far as we know.<br>
+            This is the first generator in its kind. <span class="rainbow">Yes! We are the first!</span>
+        </p>
+        <p class="text-red-400 mt-2 font-bold" style="color:#ff5555;">Make the perfect signs for your Minecraft builds!</p>
+        <div class="text-sm mt-2" style="color:#5555ff;">
+            ⚠️ If you have cool ideas, suggest them in our <a href="https://alonsoaliaga.com/discord" style="text-decoration:underline;">official discord server</a>.<br>
+            💎 If you found this tool useful, consider <a href="https://alonsoaliaga.com/donate" style="text-decoration:underline;">making a donation</a> for our hard work. We appreciate it!
+        </div>
+    </div>
+
+    <!-- Site Options -->
+    <div style="margin-bottom: 20px;">
+        <span class="font-bold mr-2">Site options:</span>
+        <label class="btn-custom">
+            <input type="checkbox" id="darkModeCheck" checked> Dark Mode 👁️‍🗨️
+        </label>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <div class="ad-space"></div>
+
+        <!-- Central Column -->
+        <div class="flex flex-col w-full max-w-[1100px]">
+            
+            <!-- App Container -->
+            <div class="app-container">
+                
+                <!-- Input Section -->
+                <div class="flex flex-col gap-2 items-center w-full px-4">
+                    <label style="font-family: MinecraftBold; font-size: 18px;">Type your text here:</label>
+                    <input type="text" id="textInput" value="AlonsoAliaga" class="input-custom w-full max-w-[600px]" style="border-radius: 25px; height: 45px; font-size: 20px;" placeholder="Type here (A-Z, a-z)..." autofocus>
+                    <div style="font-size: 12px; opacity: 0.7; margin-bottom: 10px;">Click on any sign line to copy it! 📋</div>
+                </div>
+
+                <!-- Color Selector Fieldset -->
+                <fieldset id="color-selector">
+                    <legend>&nbsp;Sign Color 🎨&nbsp;</legend>
+                    <div id="dyeContainer" class="dye-selector-container">
+                        <!-- Colors Generated by JS -->
+                        <!-- Separator -->
+                        <!-- Glow Button -->
+                    </div>
+                </fieldset>
+
+                <!-- NEW: In-game Preview Fieldset -->
+                <fieldset id="ingame-preview">
+                    <legend>&nbsp;In game Preview 🎮&nbsp;</legend>
+                     <!-- New Copy Instruction Text -->
+                     <div style="width: 100%; text-align: center; font-size: 12px; opacity: 0.8; margin-bottom: 0px; font-family: 'MinecraftRegular'; color: var(--text-color);">
+                        This is the preview of how it will look in game! 👀
+                     </div>
+
+                    <div class="canvas-box" id="ingameContainer" style="min-height: 48px; justify-content: center;">
+                       <div style="opacity:0.5; font-size: 12px;">Type above to see previews (if available)</div>
+                    </div>
+                </fieldset>
+
+                <!-- Generated Signs Preview Fieldset -->
+                <fieldset id="feature-data">
+                     <legend>&nbsp;Generated Signs Preview 🖼️&nbsp;</legend>
+                     
+                     <!-- New Copy Instruction Text -->
+                     <div style="width: 100%; text-align: center; font-size: 12px; opacity: 0.8; margin-bottom: 0px; font-family: 'MinecraftRegular'; color: var(--text-color);">
+                        Click on each line to copy it and paste it in-game! 📋
+                     </div>
+                     <div style="width: 100%; text-align: center; font-size: 12px; opacity: 0.8; margin-bottom: 10px; font-family: 'MinecraftRegular'; color: var(--text-color);">
+                        Don't worry! Even if it looks messy, in game it will look just perfect! 💎
+                     </div>
+
+                     <div class="canvas-box" id="signsContainer">
+                        <!-- Signs will be injected here dynamically -->
+                     </div>
+                     <div class="profile_base"></div>
+                </fieldset>
+
+                <!-- NEW Copy Animation Popup -->
+                <div id="copy-notification">
+                    <span>COPIED LINE!</span> <span>✅</span>
+                </div>
+
+            </div>
+            <br>
+            <!-- Showcase Section -->
+            <div class="showcase-container">
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend">Looking for a pixelart like this? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/pixelart-showcase.png" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mcpfp', '_blank');">
+                </fieldset>
+                
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend">Looking for a render like this one? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/render-showcase.png" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mc-renders', '_blank');">
+                </fieldset>
+                
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend">Looking for an animation like this one? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/skin-showcase.gif" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mc-skin', '_blank');">
+                </fieldset>
+            </div>
+
+            <!-- More Tools Section -->
+            <div class="options">
+                <div style="border-radius: 25px;font-size: 18px ;padding: 10px 40px; font-family: MinecraftRegular;" class="examples">
+                    <h2 style="font-size: 18px; font-family: MinecraftBold;">More tools for you:</h2>
+                    <div style="text-align: left;font-size: 20px;" id="tools-for-you">
+                        <!-- Tools will be loaded here by JS -->
+                    </div>
+                    <br>
+                    <a href="https://alonsoaliaga.github.io" rel="noopener" target="_blank" style="font-size: 18px; font-family: MinecraftBold; color: var(--link-color); text-decoration: none;">AlonsoAliaga Development</a>
+                </div>
+            </div>
+            
+            <h2 style="font-size: 15px ;text-align: center; margin-top: 10px;">Thanks to <a href="https://alonsoaliaga.com/donate" rel="noopener" target="_blank" style="color:var(--link-color);">AlonsoAliaga</a> and <a href="https://google.com" rel="noopener" target="_blank" style="color:var(--link-color);">Gemini</a> for his hard work during the development of this tool.</h2>
+            <br>
+            <div class="minecraft_auth" data-max-width="750px" data-max-height="120px"></div>
+        </div>
+
+        <div class="ad-space"></div>
+    </div>
+    
+    <!-- Floating Visitor Counter -->
+    <div id="mybutton">
+        <a href="https://alonsoaliaga.github.io">
+            <img class="floating-icon" src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png">
+        </a>
+        <div id="visitor-counter">
+            <span id="counter-amount" style="font-family: MinecraftBold;font-weight: bold;">Visits: 0</span>
+        </div>
+    </div>
+
+    <!-- Generic Error Popup -->
+    <div id="errorPopup" class="error-popup">
+        <span style="font-size: 20px;">⚠️</span>
+        <div style="text-align: center;">
+            <div style="font-weight: bold; font-size: 16px;">Error!</div>
+            <div style="font-size: 12px; opacity: 0.9;" id="errorMsg">Something went wrong.</div>
+        </div>
+        <span style="font-size: 20px;">⚠️</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+
+    <script>
+        // --- COLORS DATA ---
+        let colors = {
+            "black": { icon: "https://minecraft.wiki/images/Invicon_Black_Dye.png", color: "#000000", glowColor: "#ede8ca" },
+            "white": { icon: "https://minecraft.wiki/images/Invicon_White_Dye.png", color: "#fcfcfc", glowColor: "#656565" },
+            "orange": { icon: "https://minecraft.wiki/images/Invicon_Orange_Dye.png", color: "#fc671f", glowColor: "#65290c" },
+            "magenta": { icon: "https://minecraft.wiki/images/Invicon_Magenta_Dye.png", color: "#fc00fc", glowColor: "#650065" },
+            "light_blue": { icon: "https://minecraft.wiki/images/Invicon_Light_Blue_Dye.png", color: "#98becb", glowColor: "#3c4b51" },
+            "yellow": { icon: "https://minecraft.wiki/images/Invicon_Yellow_Dye.png", color: "#fcfc00", glowColor: "#605a14" },
+            "lime": { icon: "https://minecraft.wiki/images/Invicon_Lime_Dye.png", color: "#bdfc00", glowColor: "#656500" },
+            "pink": { icon: "https://minecraft.wiki/images/Invicon_Pink_Dye.png", color: "#fc68b2", glowColor: "#652a47" },
+            "gray": { icon: "https://minecraft.wiki/images/Invicon_Gray_Dye.png", color: "#7f7f7f", glowColor: "#323232" },
+            "light_gray": { icon: "https://minecraft.wiki/images/Invicon_Light_Gray_Dye.png", color: "#d0d0d0", glowColor: "#535353" },
+            "cyan": { icon: "https://minecraft.wiki/images/Invicon_Cyan_Dye.png", color: "#00fcfc", glowColor: "#006565" },
+            "purple": { icon: "https://minecraft.wiki/images/Invicon_Purple_Dye.png", color: "#9e20ed", glowColor: "#3f0c5f" },
+            "blue": { icon: "https://minecraft.wiki/images/Invicon_Blue_Dye.png", color: "#0000fc", glowColor: "#000065" },
+            "brown": { icon: "https://minecraft.wiki/images/Invicon_Brown_Dye.png", color: "#894413", glowColor: "#361b07" },
+            "green": { icon: "https://minecraft.wiki/images/Invicon_Green_Dye.png", color: "#00fc00", glowColor: "#006500" },
+            "red": { icon: "https://minecraft.wiki/images/Invicon_Red_Dye.png", color: "#fc0000", glowColor: "#650000" }
+        };
+        
+        let selectedColor = "black";
+        let glowEnabled = false; // State for Glow Ink Sac
+        let isDraggedEnabled = false; // Flag to prevent interaction
+
+        // --- UPDATED ASCII DATA STRUCTURE ---
+        let fonts = {
+            " ": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/white/space.png",
+                        "orange": "../assets/letters/orange/space.png",
+                        "magenta": "../assets/letters/magenta/space.png",
+                        "light_blue": "../assets/letters/light_blue/space.png",
+                        "yellow": "../assets/letters/yellow/space.png",
+                        "lime": "../assets/letters/lime/space.png",
+                        "pink": "../assets/letters/pink/space.png",
+                        "gray": "../assets/letters/gray/space.png",
+                        "light_gray": "../assets/letters/light_gray/space.png",
+                        "cyan": "../assets/letters/cyan/space.png",
+                        "purple": "../assets/letters/purple/space.png",
+                        "blue": "../assets/letters/blue/space.png",
+                        "brown": "../assets/letters/brown/space.png",
+                        "green": "../assets/letters/green/space.png",
+                        "red": "../assets/letters/red/space.png",
+                        "black": "../assets/letters/black/space.png"
+                    }
+                },
+                lines: [
+                    "  ",
+                    "  ",
+                    "  ",
+                    "  "
+                ]
+            },
+            "A": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/A.png",
+                        "orange": "../assets/letters/upper/orange/A.png",
+                        "magenta": "../assets/letters/upper/magenta/A.png",
+                        "light_blue": "../assets/letters/upper/light_blue/A.png",
+                        "yellow": "../assets/letters/upper/yellow/A.png",
+                        "lime": "../assets/letters/upper/lime/A.png",
+                        "pink": "../assets/letters/upper/pink/A.png",
+                        "gray": "../assets/letters/upper/gray/A.png",
+                        "light_gray": "../assets/letters/upper/light_gray/A.png",
+                        "cyan": "../assets/letters/upper/cyan/A.png",
+                        "purple": "../assets/letters/upper/purple/A.png",
+                        "blue": "../assets/letters/upper/blue/A.png",
+                        "brown": "../assets/letters/upper/brown/A.png",
+                        "green": "../assets/letters/upper/green/A.png",
+                        "red": "../assets/letters/upper/red/A.png",
+                        "black": "../assets/letters/upper/black/A.png"
+                    }
+                },
+                lines: [
+                    "◢▊▀▊◣",
+                    "█▄█",
+                    "█  ▏█",
+                    "█  ▏█"
+                ]
+            },
+            "B": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/B.png",
+                        "orange": "../assets/letters/upper/orange/B.png",
+                        "magenta": "../assets/letters/upper/magenta/B.png",
+                        "light_blue": "../assets/letters/upper/light_blue/B.png",
+                        "yellow": "../assets/letters/upper/yellow/B.png",
+                        "lime": "../assets/letters/upper/lime/B.png",
+                        "pink": "../assets/letters/upper/pink/B.png",
+                        "gray": "../assets/letters/upper/gray/B.png",
+                        "light_gray": "../assets/letters/upper/light_gray/B.png",
+                        "cyan": "../assets/letters/upper/cyan/B.png",
+                        "purple": "../assets/letters/upper/purple/B.png",
+                        "blue": "../assets/letters/upper/blue/B.png",
+                        "brown": "../assets/letters/upper/brown/B.png",
+                        "green": "../assets/letters/upper/green/B.png",
+                        "red": "../assets/letters/upper/red/B.png",
+                        "black": "../assets/letters/upper/black/B.png"
+                    }
+                },
+                lines: [
+                    "█▀▊◣",
+                    "█▄▊◤",
+                    "█  ▏▊◣",
+                    "█▄▊◤"
+                ]
+            },
+            "C": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/C.png",
+                        "orange": "../assets/letters/upper/orange/C.png",
+                        "magenta": "../assets/letters/upper/magenta/C.png",
+                        "light_blue": "../assets/letters/upper/light_blue/C.png",
+                        "yellow": "../assets/letters/upper/yellow/C.png",
+                        "lime": "../assets/letters/upper/lime/C.png",
+                        "pink": "../assets/letters/upper/pink/C.png",
+                        "gray": "../assets/letters/upper/gray/C.png",
+                        "light_gray": "../assets/letters/upper/light_gray/C.png",
+                        "cyan": "../assets/letters/upper/cyan/C.png",
+                        "purple": "../assets/letters/upper/purple/C.png",
+                        "blue": "../assets/letters/upper/blue/C.png",
+                        "brown": "../assets/letters/upper/brown/C.png",
+                        "green": "../assets/letters/upper/green/C.png",
+                        "red": "../assets/letters/upper/red/C.png",
+                        "black": "../assets/letters/upper/black/C.png"
+                    }
+                },
+                lines: [
+                    "◢▊▀▊◣",
+                    "█▏  ▀",
+                    "█▏  ▄",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "D": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/D.png",
+                        "orange": "../assets/letters/upper/orange/D.png",
+                        "magenta": "../assets/letters/upper/magenta/D.png",
+                        "light_blue": "../assets/letters/upper/light_blue/D.png",
+                        "yellow": "../assets/letters/upper/yellow/D.png",
+                        "lime": "../assets/letters/upper/lime/D.png",
+                        "pink": "../assets/letters/upper/pink/D.png",
+                        "gray": "../assets/letters/upper/gray/D.png",
+                        "light_gray": "../assets/letters/upper/light_gray/D.png",
+                        "cyan": "../assets/letters/upper/cyan/D.png",
+                        "purple": "../assets/letters/upper/purple/D.png",
+                        "blue": "../assets/letters/upper/blue/D.png",
+                        "brown": "../assets/letters/upper/brown/D.png",
+                        "green": "../assets/letters/upper/green/D.png",
+                        "red": "../assets/letters/upper/red/D.png",
+                        "black": "../assets/letters/upper/black/D.png"
+                    }
+                },
+                lines: [
+                    "█▀▊◣",
+                    "█  ▏█",
+                    "█  ▏█",
+                    "█▄▊◤"
+                ]
+            },
+            "E": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/E.png",
+                        "orange": "../assets/letters/upper/orange/E.png",
+                        "magenta": "../assets/letters/upper/magenta/E.png",
+                        "light_blue": "../assets/letters/upper/light_blue/E.png",
+                        "yellow": "../assets/letters/upper/yellow/E.png",
+                        "lime": "../assets/letters/upper/lime/E.png",
+                        "pink": "../assets/letters/upper/pink/E.png",
+                        "gray": "../assets/letters/upper/gray/E.png",
+                        "light_gray": "../assets/letters/upper/light_gray/E.png",
+                        "cyan": "../assets/letters/upper/cyan/E.png",
+                        "purple": "../assets/letters/upper/purple/E.png",
+                        "blue": "../assets/letters/upper/blue/E.png",
+                        "brown": "../assets/letters/upper/brown/E.png",
+                        "green": "../assets/letters/upper/green/E.png",
+                        "red": "../assets/letters/upper/red/E.png",
+                        "black": "../assets/letters/upper/black/E.png"
+                    }
+                },
+                lines: [
+                    "█▀▀",
+                    "█▄▄",
+                    "█▎    ",
+                    "█▄▄"
+                ]
+            },
+            "F": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/F.png",
+                        "orange": "../assets/letters/upper/orange/F.png",
+                        "magenta": "../assets/letters/upper/magenta/F.png",
+                        "light_blue": "../assets/letters/upper/light_blue/F.png",
+                        "yellow": "../assets/letters/upper/yellow/F.png",
+                        "lime": "../assets/letters/upper/lime/F.png",
+                        "pink": "../assets/letters/upper/pink/F.png",
+                        "gray": "../assets/letters/upper/gray/F.png",
+                        "light_gray": "../assets/letters/upper/light_gray/F.png",
+                        "cyan": "../assets/letters/upper/cyan/F.png",
+                        "purple": "../assets/letters/upper/purple/F.png",
+                        "blue": "../assets/letters/upper/blue/F.png",
+                        "brown": "../assets/letters/upper/brown/F.png",
+                        "green": "../assets/letters/upper/green/F.png",
+                        "red": "../assets/letters/upper/red/F.png",
+                        "black": "../assets/letters/upper/black/F.png"
+                    }
+                },
+                lines: [
+                    "█▀▀",
+                    "█▄▄",
+                    "█▎    ",
+                    "█▎    "
+                ]
+            },
+            "G": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/G.png",
+                        "orange": "../assets/letters/upper/orange/G.png",
+                        "magenta": "../assets/letters/upper/magenta/G.png",
+                        "light_blue": "../assets/letters/upper/light_blue/G.png",
+                        "yellow": "../assets/letters/upper/yellow/G.png",
+                        "lime": "../assets/letters/upper/lime/G.png",
+                        "pink": "../assets/letters/upper/pink/G.png",
+                        "gray": "../assets/letters/upper/gray/G.png",
+                        "light_gray": "../assets/letters/upper/light_gray/G.png",
+                        "cyan": "../assets/letters/upper/cyan/G.png",
+                        "purple": "../assets/letters/upper/purple/G.png",
+                        "blue": "../assets/letters/upper/blue/G.png",
+                        "brown": "../assets/letters/upper/brown/G.png",
+                        "green": "../assets/letters/upper/green/G.png",
+                        "red": "../assets/letters/upper/red/G.png",
+                        "black": "../assets/letters/upper/black/G.png"
+                    }
+                },
+                lines: [
+                    "◢▊▀▊◣",
+                    "█▏  ▀",
+                    "█ ◥█",
+                    "◥▊▄█"
+                ]
+            },
+            "H": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/H.png",
+                        "orange": "../assets/letters/upper/orange/H.png",
+                        "magenta": "../assets/letters/upper/magenta/H.png",
+                        "light_blue": "../assets/letters/upper/light_blue/H.png",
+                        "yellow": "../assets/letters/upper/yellow/H.png",
+                        "lime": "../assets/letters/upper/lime/H.png",
+                        "pink": "../assets/letters/upper/pink/H.png",
+                        "gray": "../assets/letters/upper/gray/H.png",
+                        "light_gray": "../assets/letters/upper/light_gray/H.png",
+                        "cyan": "../assets/letters/upper/cyan/H.png",
+                        "purple": "../assets/letters/upper/purple/H.png",
+                        "blue": "../assets/letters/upper/blue/H.png",
+                        "brown": "../assets/letters/upper/brown/H.png",
+                        "green": "../assets/letters/upper/green/H.png",
+                        "red": "../assets/letters/upper/red/H.png",
+                        "black": "../assets/letters/upper/black/H.png"
+                    }
+                },
+                lines: [
+                    "█  ▏█",
+                    "█▄█",
+                    "█  ▏█",
+                    "█  ▏█"
+                ]
+            },
+            "I": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/I.png",
+                        "orange": "../assets/letters/upper/orange/I.png",
+                        "magenta": "../assets/letters/upper/magenta/I.png",
+                        "light_blue": "../assets/letters/upper/light_blue/I.png",
+                        "yellow": "../assets/letters/upper/yellow/I.png",
+                        "lime": "../assets/letters/upper/lime/I.png",
+                        "pink": "../assets/letters/upper/pink/I.png",
+                        "gray": "../assets/letters/upper/gray/I.png",
+                        "light_gray": "../assets/letters/upper/light_gray/I.png",
+                        "cyan": "../assets/letters/upper/cyan/I.png",
+                        "purple": "../assets/letters/upper/purple/I.png",
+                        "blue": "../assets/letters/upper/blue/I.png",
+                        "brown": "../assets/letters/upper/brown/I.png",
+                        "green": "../assets/letters/upper/green/I.png",
+                        "red": "../assets/letters/upper/red/I.png",
+                        "black": "../assets/letters/upper/black/I.png"
+                    }
+                },
+                lines: [
+                    "▀█▀",
+                    "  ▏█▏  ",
+                    "  ▏█▏  ",
+                    "▄█▄"
+                ]
+            },
+            "J": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/J.png",
+                        "orange": "../assets/letters/upper/orange/J.png",
+                        "magenta": "../assets/letters/upper/magenta/J.png",
+                        "light_blue": "../assets/letters/upper/light_blue/J.png",
+                        "yellow": "../assets/letters/upper/yellow/J.png",
+                        "lime": "../assets/letters/upper/lime/J.png",
+                        "pink": "../assets/letters/upper/pink/J.png",
+                        "gray": "../assets/letters/upper/gray/J.png",
+                        "light_gray": "../assets/letters/upper/light_gray/J.png",
+                        "cyan": "../assets/letters/upper/cyan/J.png",
+                        "purple": "../assets/letters/upper/purple/J.png",
+                        "blue": "../assets/letters/upper/blue/J.png",
+                        "brown": "../assets/letters/upper/brown/J.png",
+                        "green": "../assets/letters/upper/green/J.png",
+                        "red": "../assets/letters/upper/red/J.png",
+                        "black": "../assets/letters/upper/black/J.png"
+                    }
+                },
+                lines: [
+                    "    ▎█",
+                    "    ▎█",
+                    "▄  ▏█",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "K": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/K.png",
+                        "orange": "../assets/letters/upper/orange/K.png",
+                        "magenta": "../assets/letters/upper/magenta/K.png",
+                        "light_blue": "../assets/letters/upper/light_blue/K.png",
+                        "yellow": "../assets/letters/upper/yellow/K.png",
+                        "lime": "../assets/letters/upper/lime/K.png",
+                        "pink": "../assets/letters/upper/pink/K.png",
+                        "gray": "../assets/letters/upper/gray/K.png",
+                        "light_gray": "../assets/letters/upper/light_gray/K.png",
+                        "cyan": "../assets/letters/upper/cyan/K.png",
+                        "purple": "../assets/letters/upper/purple/K.png",
+                        "blue": "../assets/letters/upper/blue/K.png",
+                        "brown": "../assets/letters/upper/brown/K.png",
+                        "green": "../assets/letters/upper/green/K.png",
+                        "red": "../assets/letters/upper/red/K.png",
+                        "black": "../assets/letters/upper/black/K.png"
+                    }
+                },
+                lines: [
+                    "█ ◢▊◤",
+                    "█◢▊◤ ",
+                    "█◥▊◣ ",
+                    "█ ◥▊◣"
+                ]
+            },
+            "L": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/L.png",
+                        "orange": "../assets/letters/upper/orange/L.png",
+                        "magenta": "../assets/letters/upper/magenta/L.png",
+                        "light_blue": "../assets/letters/upper/light_blue/L.png",
+                        "yellow": "../assets/letters/upper/yellow/L.png",
+                        "lime": "../assets/letters/upper/lime/L.png",
+                        "pink": "../assets/letters/upper/pink/L.png",
+                        "gray": "../assets/letters/upper/gray/L.png",
+                        "light_gray": "../assets/letters/upper/light_gray/L.png",
+                        "cyan": "../assets/letters/upper/cyan/L.png",
+                        "purple": "../assets/letters/upper/purple/L.png",
+                        "blue": "../assets/letters/upper/blue/L.png",
+                        "brown": "../assets/letters/upper/brown/L.png",
+                        "green": "../assets/letters/upper/green/L.png",
+                        "red": "../assets/letters/upper/red/L.png",
+                        "black": "../assets/letters/upper/black/L.png"
+                    }
+                },
+                lines: [
+                    "█▎    ",
+                    "█▎    ",
+                    "█▎    ",
+                    "█▄▄"
+                ]
+            },
+            "M": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/M.png",
+                        "orange": "../assets/letters/upper/orange/M.png",
+                        "magenta": "../assets/letters/upper/magenta/M.png",
+                        "light_blue": "../assets/letters/upper/light_blue/M.png",
+                        "yellow": "../assets/letters/upper/yellow/M.png",
+                        "lime": "../assets/letters/upper/lime/M.png",
+                        "pink": "../assets/letters/upper/pink/M.png",
+                        "gray": "../assets/letters/upper/gray/M.png",
+                        "light_gray": "../assets/letters/upper/light_gray/M.png",
+                        "cyan": "../assets/letters/upper/cyan/M.png",
+                        "purple": "../assets/letters/upper/purple/M.png",
+                        "blue": "../assets/letters/upper/blue/M.png",
+                        "brown": "../assets/letters/upper/brown/M.png",
+                        "green": "../assets/letters/upper/green/M.png",
+                        "red": "../assets/letters/upper/red/M.png",
+                        "black": "../assets/letters/upper/black/M.png"
+                    }
+                },
+                lines: [
+                    "▌◣  ◢▊",
+                    "█◣◢▊▊",
+                    "█◥◤▊▊",
+                    "█  ▎▊▊"
+                ]
+            },
+            "N": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/N.png",
+                        "orange": "../assets/letters/upper/orange/N.png",
+                        "magenta": "../assets/letters/upper/magenta/N.png",
+                        "light_blue": "../assets/letters/upper/light_blue/N.png",
+                        "yellow": "../assets/letters/upper/yellow/N.png",
+                        "lime": "../assets/letters/upper/lime/N.png",
+                        "pink": "../assets/letters/upper/pink/N.png",
+                        "gray": "../assets/letters/upper/gray/N.png",
+                        "light_gray": "../assets/letters/upper/light_gray/N.png",
+                        "cyan": "../assets/letters/upper/cyan/N.png",
+                        "purple": "../assets/letters/upper/purple/N.png",
+                        "blue": "../assets/letters/upper/blue/N.png",
+                        "brown": "../assets/letters/upper/brown/N.png",
+                        "green": "../assets/letters/upper/green/N.png",
+                        "red": "../assets/letters/upper/red/N.png",
+                        "black": "../assets/letters/upper/black/N.png"
+                    }
+                },
+                lines: [
+                    "█◣ █",
+                    "█▊◣█",
+                    "█◥▊█",
+                    "█ ◥█"
+                ]
+            },
+            "O": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/O.png",
+                        "orange": "../assets/letters/upper/orange/O.png",
+                        "magenta": "../assets/letters/upper/magenta/O.png",
+                        "light_blue": "../assets/letters/upper/light_blue/O.png",
+                        "yellow": "../assets/letters/upper/yellow/O.png",
+                        "lime": "../assets/letters/upper/lime/O.png",
+                        "pink": "../assets/letters/upper/pink/O.png",
+                        "gray": "../assets/letters/upper/gray/O.png",
+                        "light_gray": "../assets/letters/upper/light_gray/O.png",
+                        "cyan": "../assets/letters/upper/cyan/O.png",
+                        "purple": "../assets/letters/upper/purple/O.png",
+                        "blue": "../assets/letters/upper/blue/O.png",
+                        "brown": "../assets/letters/upper/brown/O.png",
+                        "green": "../assets/letters/upper/green/O.png",
+                        "red": "../assets/letters/upper/red/O.png",
+                        "black": "../assets/letters/upper/black/O.png"
+                    }
+                },
+                lines: [
+                    "◢▊▀▊◣",
+                    "█  ▏█",
+                    "█  ▏█",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "P": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/P.png",
+                        "orange": "../assets/letters/upper/orange/P.png",
+                        "magenta": "../assets/letters/upper/magenta/P.png",
+                        "light_blue": "../assets/letters/upper/light_blue/P.png",
+                        "yellow": "../assets/letters/upper/yellow/P.png",
+                        "lime": "../assets/letters/upper/lime/P.png",
+                        "pink": "../assets/letters/upper/pink/P.png",
+                        "gray": "../assets/letters/upper/gray/P.png",
+                        "light_gray": "../assets/letters/upper/light_gray/P.png",
+                        "cyan": "../assets/letters/upper/cyan/P.png",
+                        "purple": "../assets/letters/upper/purple/P.png",
+                        "blue": "../assets/letters/upper/blue/P.png",
+                        "brown": "../assets/letters/upper/brown/P.png",
+                        "green": "../assets/letters/upper/green/P.png",
+                        "red": "../assets/letters/upper/red/P.png",
+                        "black": "../assets/letters/upper/black/P.png"
+                    }
+                },
+                lines: [
+                    "█▀▊◣",
+                    "█▄▊◤",
+                    "█▎    ",
+                    "█▎    "
+                ]
+            },
+            "Q": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/Q.png",
+                        "orange": "../assets/letters/upper/orange/Q.png",
+                        "magenta": "../assets/letters/upper/magenta/Q.png",
+                        "light_blue": "../assets/letters/upper/light_blue/Q.png",
+                        "yellow": "../assets/letters/upper/yellow/Q.png",
+                        "lime": "../assets/letters/upper/lime/Q.png",
+                        "pink": "../assets/letters/upper/pink/Q.png",
+                        "gray": "../assets/letters/upper/gray/Q.png",
+                        "light_gray": "../assets/letters/upper/light_gray/Q.png",
+                        "cyan": "../assets/letters/upper/cyan/Q.png",
+                        "purple": "../assets/letters/upper/purple/Q.png",
+                        "blue": "../assets/letters/upper/blue/Q.png",
+                        "brown": "../assets/letters/upper/brown/Q.png",
+                        "green": "../assets/letters/upper/green/Q.png",
+                        "red": "../assets/letters/upper/red/Q.png",
+                        "black": "../assets/letters/upper/black/Q.png"
+                    }
+                },
+                lines: [
+                    "◢▊▀▊◣",
+                    "█  ▏█",
+                    "█ ◥█",
+                    "◥▊▄▊◣"
+                ]
+            },
+            "R": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/R.png",
+                        "orange": "../assets/letters/upper/orange/R.png",
+                        "magenta": "../assets/letters/upper/magenta/R.png",
+                        "light_blue": "../assets/letters/upper/light_blue/R.png",
+                        "yellow": "../assets/letters/upper/yellow/R.png",
+                        "lime": "../assets/letters/upper/lime/R.png",
+                        "pink": "../assets/letters/upper/pink/R.png",
+                        "gray": "../assets/letters/upper/gray/R.png",
+                        "light_gray": "../assets/letters/upper/light_gray/R.png",
+                        "cyan": "../assets/letters/upper/cyan/R.png",
+                        "purple": "../assets/letters/upper/purple/R.png",
+                        "blue": "../assets/letters/upper/blue/R.png",
+                        "brown": "../assets/letters/upper/brown/R.png",
+                        "green": "../assets/letters/upper/green/R.png",
+                        "red": "../assets/letters/upper/red/R.png",
+                        "black": "../assets/letters/upper/black/R.png"
+                    }
+                },
+                lines: [
+                    "█▀▊◣",
+                    "█▄▊◤",
+                    "█◥▊◣ ",
+                    "█ ◥▊◣"
+                ]
+            },
+            "S": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/S.png",
+                        "orange": "../assets/letters/upper/orange/S.png",
+                        "magenta": "../assets/letters/upper/magenta/S.png",
+                        "light_blue": "../assets/letters/upper/light_blue/S.png",
+                        "yellow": "../assets/letters/upper/yellow/S.png",
+                        "lime": "../assets/letters/upper/lime/S.png",
+                        "pink": "../assets/letters/upper/pink/S.png",
+                        "gray": "../assets/letters/upper/gray/S.png",
+                        "light_gray": "../assets/letters/upper/light_gray/S.png",
+                        "cyan": "../assets/letters/upper/cyan/S.png",
+                        "purple": "../assets/letters/upper/purple/S.png",
+                        "blue": "../assets/letters/upper/blue/S.png",
+                        "brown": "../assets/letters/upper/brown/S.png",
+                        "green": "../assets/letters/upper/green/S.png",
+                        "red": "../assets/letters/upper/red/S.png",
+                        "black": "../assets/letters/upper/black/S.png"
+                    }
+                },
+                lines: [
+                    "◢▊▀▊◣",
+                    "◥▊▊◣▀",
+                    "▄◥▊▊◣",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "T": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/T.png",
+                        "orange": "../assets/letters/upper/orange/T.png",
+                        "magenta": "../assets/letters/upper/magenta/T.png",
+                        "light_blue": "../assets/letters/upper/light_blue/T.png",
+                        "yellow": "../assets/letters/upper/yellow/T.png",
+                        "lime": "../assets/letters/upper/lime/T.png",
+                        "pink": "../assets/letters/upper/pink/T.png",
+                        "gray": "../assets/letters/upper/gray/T.png",
+                        "light_gray": "../assets/letters/upper/light_gray/T.png",
+                        "cyan": "../assets/letters/upper/cyan/T.png",
+                        "purple": "../assets/letters/upper/purple/T.png",
+                        "blue": "../assets/letters/upper/blue/T.png",
+                        "brown": "../assets/letters/upper/brown/T.png",
+                        "green": "../assets/letters/upper/green/T.png",
+                        "red": "../assets/letters/upper/red/T.png",
+                        "black": "../assets/letters/upper/black/T.png"
+                    }
+                },
+                lines: [
+                    "▀█▀",
+                    "  ▏█▏  ",
+                    "  ▏█▏  ",
+                    "  ▏█▏  "
+                ]
+            },
+            "U": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/U.png",
+                        "orange": "../assets/letters/upper/orange/U.png",
+                        "magenta": "../assets/letters/upper/magenta/U.png",
+                        "light_blue": "../assets/letters/upper/light_blue/U.png",
+                        "yellow": "../assets/letters/upper/yellow/U.png",
+                        "lime": "../assets/letters/upper/lime/U.png",
+                        "pink": "../assets/letters/upper/pink/U.png",
+                        "gray": "../assets/letters/upper/gray/U.png",
+                        "light_gray": "../assets/letters/upper/light_gray/U.png",
+                        "cyan": "../assets/letters/upper/cyan/U.png",
+                        "purple": "../assets/letters/upper/purple/U.png",
+                        "blue": "../assets/letters/upper/blue/U.png",
+                        "brown": "../assets/letters/upper/brown/U.png",
+                        "green": "../assets/letters/upper/green/U.png",
+                        "red": "../assets/letters/upper/red/U.png",
+                        "black": "../assets/letters/upper/black/U.png"
+                    }
+                },
+                lines: [
+                    "█  ▏█",
+                    "█  ▏█",
+                    "█  ▏█",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "V": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/V.png",
+                        "orange": "../assets/letters/upper/orange/V.png",
+                        "magenta": "../assets/letters/upper/magenta/V.png",
+                        "light_blue": "../assets/letters/upper/light_blue/V.png",
+                        "yellow": "../assets/letters/upper/yellow/V.png",
+                        "lime": "../assets/letters/upper/lime/V.png",
+                        "pink": "../assets/letters/upper/pink/V.png",
+                        "gray": "../assets/letters/upper/gray/V.png",
+                        "light_gray": "../assets/letters/upper/light_gray/V.png",
+                        "cyan": "../assets/letters/upper/cyan/V.png",
+                        "purple": "../assets/letters/upper/purple/V.png",
+                        "blue": "../assets/letters/upper/blue/V.png",
+                        "brown": "../assets/letters/upper/brown/V.png",
+                        "green": "../assets/letters/upper/green/V.png",
+                        "red": "../assets/letters/upper/red/V.png",
+                        "black": "../assets/letters/upper/black/V.png"
+                    }
+                },
+                lines: [
+                    "█  ▏█",
+                    "█  ▏█",
+                    "◥▊◣◢▏▎◤",
+                    " ◥▌▊◤ "
+                ]
+            },
+            "W": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/W.png",
+                        "orange": "../assets/letters/upper/orange/W.png",
+                        "magenta": "../assets/letters/upper/magenta/W.png",
+                        "light_blue": "../assets/letters/upper/light_blue/W.png",
+                        "yellow": "../assets/letters/upper/yellow/W.png",
+                        "lime": "../assets/letters/upper/lime/W.png",
+                        "pink": "../assets/letters/upper/pink/W.png",
+                        "gray": "../assets/letters/upper/gray/W.png",
+                        "light_gray": "../assets/letters/upper/light_gray/W.png",
+                        "cyan": "../assets/letters/upper/cyan/W.png",
+                        "purple": "../assets/letters/upper/purple/W.png",
+                        "blue": "../assets/letters/upper/blue/W.png",
+                        "brown": "../assets/letters/upper/brown/W.png",
+                        "green": "../assets/letters/upper/green/W.png",
+                        "red": "../assets/letters/upper/red/W.png",
+                        "black": "../assets/letters/upper/black/W.png"
+                    }
+                },
+                lines: [
+                    "█  ▎▊▊",
+                    "█  ▎▊▊",
+                    "█◢◣▊▊",
+                    "█◤◥▊▊"
+                ]
+            },
+            "X": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/X.png",
+                        "orange": "../assets/letters/upper/orange/X.png",
+                        "magenta": "../assets/letters/upper/magenta/X.png",
+                        "light_blue": "../assets/letters/upper/light_blue/X.png",
+                        "yellow": "../assets/letters/upper/yellow/X.png",
+                        "lime": "../assets/letters/upper/lime/X.png",
+                        "pink": "../assets/letters/upper/pink/X.png",
+                        "gray": "../assets/letters/upper/gray/X.png",
+                        "light_gray": "../assets/letters/upper/light_gray/X.png",
+                        "cyan": "../assets/letters/upper/cyan/X.png",
+                        "purple": "../assets/letters/upper/purple/X.png",
+                        "blue": "../assets/letters/upper/blue/X.png",
+                        "brown": "../assets/letters/upper/brown/X.png",
+                        "green": "../assets/letters/upper/green/X.png",
+                        "red": "../assets/letters/upper/red/X.png",
+                        "black": "../assets/letters/upper/black/X.png"
+                    }
+                },
+                lines: [
+                    "◥▊◣◢▏▎◤",
+                    " ◥█◤ ",
+                    " ◢█◣ ",
+                    "◢▊◤◥▏▎◣"
+                ]
+            },
+            "Y": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/Y.png",
+                        "orange": "../assets/letters/upper/orange/Y.png",
+                        "magenta": "../assets/letters/upper/magenta/Y.png",
+                        "light_blue": "../assets/letters/upper/light_blue/Y.png",
+                        "yellow": "../assets/letters/upper/yellow/Y.png",
+                        "lime": "../assets/letters/upper/lime/Y.png",
+                        "pink": "../assets/letters/upper/pink/Y.png",
+                        "gray": "../assets/letters/upper/gray/Y.png",
+                        "light_gray": "../assets/letters/upper/light_gray/Y.png",
+                        "cyan": "../assets/letters/upper/cyan/Y.png",
+                        "purple": "../assets/letters/upper/purple/Y.png",
+                        "blue": "../assets/letters/upper/blue/Y.png",
+                        "brown": "../assets/letters/upper/brown/Y.png",
+                        "green": "../assets/letters/upper/green/Y.png",
+                        "red": "../assets/letters/upper/red/Y.png",
+                        "black": "../assets/letters/upper/black/Y.png"
+                    }
+                },
+                lines: [
+                    "◥▊◣◢▏▎◤",
+                    " ◥█◤ ",
+                    "  ▏█▏  ",
+                    "  ▏█▏  "
+                ]
+            },
+            "Z": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/upper/white/Z.png",
+                        "orange": "../assets/letters/upper/orange/Z.png",
+                        "magenta": "../assets/letters/upper/magenta/Z.png",
+                        "light_blue": "../assets/letters/upper/light_blue/Z.png",
+                        "yellow": "../assets/letters/upper/yellow/Z.png",
+                        "lime": "../assets/letters/upper/lime/Z.png",
+                        "pink": "../assets/letters/upper/pink/Z.png",
+                        "gray": "../assets/letters/upper/gray/Z.png",
+                        "light_gray": "../assets/letters/upper/light_gray/Z.png",
+                        "cyan": "../assets/letters/upper/cyan/Z.png",
+                        "purple": "../assets/letters/upper/purple/Z.png",
+                        "blue": "../assets/letters/upper/blue/Z.png",
+                        "brown": "../assets/letters/upper/brown/Z.png",
+                        "green": "../assets/letters/upper/green/Z.png",
+                        "red": "../assets/letters/upper/red/Z.png",
+                        "black": "../assets/letters/upper/black/Z.png"
+                    }
+                },
+                lines: [
+                    "▀▀▊◤",
+                    "  ◢◤",
+                    "◢◤ ",
+                    "◢▊▄▄"
+                ]
+            },
+
+            // Lowercase
+            "a": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/a.png",
+                        "orange": "../assets/letters/lower/orange/a.png",
+                        "magenta": "../assets/letters/lower/magenta/a.png",
+                        "light_blue": "../assets/letters/lower/light_blue/a.png",
+                        "yellow": "../assets/letters/lower/yellow/a.png",
+                        "lime": "../assets/letters/lower/lime/a.png",
+                        "pink": "../assets/letters/lower/pink/a.png",
+                        "gray": "../assets/letters/lower/gray/a.png",
+                        "light_gray": "../assets/letters/lower/light_gray/a.png",
+                        "cyan": "../assets/letters/lower/cyan/a.png",
+                        "purple": "../assets/letters/lower/purple/a.png",
+                        "blue": "../assets/letters/lower/blue/a.png",
+                        "brown": "../assets/letters/lower/brown/a.png",
+                        "green": "../assets/letters/lower/green/a.png",
+                        "red": "../assets/letters/lower/red/a.png",
+                        "black": "../assets/letters/lower/black/a.png"
+                    }
+                },
+                lines: [
+                    " ",
+                    "▀▀▄",
+                    "◢▊▀█",
+                    "◥▊▄█"
+                ]
+            },
+            "b": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/b.png",
+                        "orange": "../assets/letters/lower/orange/b.png",
+                        "magenta": "../assets/letters/lower/magenta/b.png",
+                        "light_blue": "../assets/letters/lower/light_blue/b.png",
+                        "yellow": "../assets/letters/lower/yellow/b.png",
+                        "lime": "../assets/letters/lower/lime/b.png",
+                        "pink": "../assets/letters/lower/pink/b.png",
+                        "gray": "../assets/letters/lower/gray/b.png",
+                        "light_gray": "../assets/letters/lower/light_gray/b.png",
+                        "cyan": "../assets/letters/lower/cyan/b.png",
+                        "purple": "../assets/letters/lower/purple/b.png",
+                        "blue": "../assets/letters/lower/blue/b.png",
+                        "brown": "../assets/letters/lower/brown/b.png",
+                        "green": "../assets/letters/lower/green/b.png",
+                        "red": "../assets/letters/lower/red/b.png",
+                        "black": "../assets/letters/lower/black/b.png"
+                    }
+                },
+                lines: [
+                    "█▎    ",
+                    "█▀▊◣",
+                    "█  ▏█",
+                    "█▄▊◤"
+                ]
+            },
+            "c": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/c.png",
+                        "orange": "../assets/letters/lower/orange/c.png",
+                        "magenta": "../assets/letters/lower/magenta/c.png",
+                        "light_blue": "../assets/letters/lower/light_blue/c.png",
+                        "yellow": "../assets/letters/lower/yellow/c.png",
+                        "lime": "../assets/letters/lower/lime/c.png",
+                        "pink": "../assets/letters/lower/pink/c.png",
+                        "gray": "../assets/letters/lower/gray/c.png",
+                        "light_gray": "../assets/letters/lower/light_gray/c.png",
+                        "cyan": "../assets/letters/lower/cyan/c.png",
+                        "purple": "../assets/letters/lower/purple/c.png",
+                        "blue": "../assets/letters/lower/blue/c.png",
+                        "brown": "../assets/letters/lower/brown/c.png",
+                        "green": "../assets/letters/lower/green/c.png",
+                        "red": "../assets/letters/lower/red/c.png",
+                        "black": "../assets/letters/lower/black/c.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "◢▊▀▊◣",
+                    "█▎    ",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "d": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/d.png",
+                        "orange": "../assets/letters/lower/orange/d.png",
+                        "magenta": "../assets/letters/lower/magenta/d.png",
+                        "light_blue": "../assets/letters/lower/light_blue/d.png",
+                        "yellow": "../assets/letters/lower/yellow/d.png",
+                        "lime": "../assets/letters/lower/lime/d.png",
+                        "pink": "../assets/letters/lower/pink/d.png",
+                        "gray": "../assets/letters/lower/gray/d.png",
+                        "light_gray": "../assets/letters/lower/light_gray/d.png",
+                        "cyan": "../assets/letters/lower/cyan/d.png",
+                        "purple": "../assets/letters/lower/purple/d.png",
+                        "blue": "../assets/letters/lower/blue/d.png",
+                        "brown": "../assets/letters/lower/brown/d.png",
+                        "green": "../assets/letters/lower/green/d.png",
+                        "red": "../assets/letters/lower/red/d.png",
+                        "black": "../assets/letters/lower/black/d.png"
+                    }
+                },
+                lines: [
+                    "    ▎█",
+                    "◢▊▀█",
+                    "█  ▏█",
+                    "◥▊▄█"
+                ]
+            },
+            "e": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/e.png",
+                        "orange": "../assets/letters/lower/orange/e.png",
+                        "magenta": "../assets/letters/lower/magenta/e.png",
+                        "light_blue": "../assets/letters/lower/light_blue/e.png",
+                        "yellow": "../assets/letters/lower/yellow/e.png",
+                        "lime": "../assets/letters/lower/lime/e.png",
+                        "pink": "../assets/letters/lower/pink/e.png",
+                        "gray": "../assets/letters/lower/gray/e.png",
+                        "light_gray": "../assets/letters/lower/light_gray/e.png",
+                        "cyan": "../assets/letters/lower/cyan/e.png",
+                        "purple": "../assets/letters/lower/purple/e.png",
+                        "blue": "../assets/letters/lower/blue/e.png",
+                        "brown": "../assets/letters/lower/brown/e.png",
+                        "green": "../assets/letters/lower/green/e.png",
+                        "red": "../assets/letters/lower/red/e.png",
+                        "black": "../assets/letters/lower/black/e.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "◢▊▀▊◣",
+                    "█▀▀",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "f": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/f.png",
+                        "orange": "../assets/letters/lower/orange/f.png",
+                        "magenta": "../assets/letters/lower/magenta/f.png",
+                        "light_blue": "../assets/letters/lower/light_blue/f.png",
+                        "yellow": "../assets/letters/lower/yellow/f.png",
+                        "lime": "../assets/letters/lower/lime/f.png",
+                        "pink": "../assets/letters/lower/pink/f.png",
+                        "gray": "../assets/letters/lower/gray/f.png",
+                        "light_gray": "../assets/letters/lower/light_gray/f.png",
+                        "cyan": "../assets/letters/lower/cyan/f.png",
+                        "purple": "../assets/letters/lower/purple/f.png",
+                        "blue": "../assets/letters/lower/blue/f.png",
+                        "brown": "../assets/letters/lower/brown/f.png",
+                        "green": "../assets/letters/lower/green/f.png",
+                        "red": "../assets/letters/lower/red/f.png",
+                        "black": "../assets/letters/lower/black/f.png"
+                    }
+                },
+                lines: [
+                    "  ◢▊▏▊◣",
+                    " ▏█▏ ",
+                    "  █▀",
+                    " ▏█▏ "
+                ]
+            },
+            "g": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/g.png",
+                        "orange": "../assets/letters/lower/orange/g.png",
+                        "magenta": "../assets/letters/lower/magenta/g.png",
+                        "light_blue": "../assets/letters/lower/light_blue/g.png",
+                        "yellow": "../assets/letters/lower/yellow/g.png",
+                        "lime": "../assets/letters/lower/lime/g.png",
+                        "pink": "../assets/letters/lower/pink/g.png",
+                        "gray": "../assets/letters/lower/gray/g.png",
+                        "light_gray": "../assets/letters/lower/light_gray/g.png",
+                        "cyan": "../assets/letters/lower/cyan/g.png",
+                        "purple": "../assets/letters/lower/purple/g.png",
+                        "blue": "../assets/letters/lower/blue/g.png",
+                        "brown": "../assets/letters/lower/brown/g.png",
+                        "green": "../assets/letters/lower/green/g.png",
+                        "red": "../assets/letters/lower/red/g.png",
+                        "black": "../assets/letters/lower/black/g.png"
+                    }
+                },
+                lines: [
+                    "  ",
+                    "◢▊▀◢▊",
+                    "◥▊▄█",
+                    "▄▄▊◤"
+                ]
+            },
+            "h": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/h.png",
+                        "orange": "../assets/letters/lower/orange/h.png",
+                        "magenta": "../assets/letters/lower/magenta/h.png",
+                        "light_blue": "../assets/letters/lower/light_blue/h.png",
+                        "yellow": "../assets/letters/lower/yellow/h.png",
+                        "lime": "../assets/letters/lower/lime/h.png",
+                        "pink": "../assets/letters/lower/pink/h.png",
+                        "gray": "../assets/letters/lower/gray/h.png",
+                        "light_gray": "../assets/letters/lower/light_gray/h.png",
+                        "cyan": "../assets/letters/lower/cyan/h.png",
+                        "purple": "../assets/letters/lower/purple/h.png",
+                        "blue": "../assets/letters/lower/blue/h.png",
+                        "brown": "../assets/letters/lower/brown/h.png",
+                        "green": "../assets/letters/lower/green/h.png",
+                        "red": "../assets/letters/lower/red/h.png",
+                        "black": "../assets/letters/lower/black/h.png"
+                    }
+                },
+                lines: [
+                    "█▎    ",
+                    "█▎    ",
+                    "█▀▊◣",
+                    "█  ▏█"
+                ]
+            },
+            "i": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/i.png",
+                        "orange": "../assets/letters/lower/orange/i.png",
+                        "magenta": "../assets/letters/lower/magenta/i.png",
+                        "light_blue": "../assets/letters/lower/light_blue/i.png",
+                        "yellow": "../assets/letters/lower/yellow/i.png",
+                        "lime": "../assets/letters/lower/lime/i.png",
+                        "pink": "../assets/letters/lower/pink/i.png",
+                        "gray": "../assets/letters/lower/gray/i.png",
+                        "light_gray": "../assets/letters/lower/light_gray/i.png",
+                        "cyan": "../assets/letters/lower/cyan/i.png",
+                        "purple": "../assets/letters/lower/purple/i.png",
+                        "blue": "../assets/letters/lower/blue/i.png",
+                        "brown": "../assets/letters/lower/brown/i.png",
+                        "green": "../assets/letters/lower/green/i.png",
+                        "red": "../assets/letters/lower/red/i.png",
+                        "black": "../assets/letters/lower/black/i.png"
+                    }
+                },
+                lines: [
+                    "▏▀▏",
+                    "▏█▏",
+                    "▏█▏",
+                    "▏█▏"
+                ]
+            },
+            "j": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/j.png",
+                        "orange": "../assets/letters/lower/orange/j.png",
+                        "magenta": "../assets/letters/lower/magenta/j.png",
+                        "light_blue": "../assets/letters/lower/light_blue/j.png",
+                        "yellow": "../assets/letters/lower/yellow/j.png",
+                        "lime": "../assets/letters/lower/lime/j.png",
+                        "pink": "../assets/letters/lower/pink/j.png",
+                        "gray": "../assets/letters/lower/gray/j.png",
+                        "light_gray": "../assets/letters/lower/light_gray/j.png",
+                        "cyan": "../assets/letters/lower/cyan/j.png",
+                        "purple": "../assets/letters/lower/purple/j.png",
+                        "blue": "../assets/letters/lower/blue/j.png",
+                        "brown": "../assets/letters/lower/brown/j.png",
+                        "green": "../assets/letters/lower/green/j.png",
+                        "red": "../assets/letters/lower/red/j.png",
+                        "black": "../assets/letters/lower/black/j.png"
+                    }
+                },
+                lines: [
+                    "    ▎▀",
+                    "    ▎█",
+                    "    ▎█",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "k": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/k.png",
+                        "orange": "../assets/letters/lower/orange/k.png",
+                        "magenta": "../assets/letters/lower/magenta/k.png",
+                        "light_blue": "../assets/letters/lower/light_blue/k.png",
+                        "yellow": "../assets/letters/lower/yellow/k.png",
+                        "lime": "../assets/letters/lower/lime/k.png",
+                        "pink": "../assets/letters/lower/pink/k.png",
+                        "gray": "../assets/letters/lower/gray/k.png",
+                        "light_gray": "../assets/letters/lower/light_gray/k.png",
+                        "cyan": "../assets/letters/lower/cyan/k.png",
+                        "purple": "../assets/letters/lower/purple/k.png",
+                        "blue": "../assets/letters/lower/blue/k.png",
+                        "brown": "../assets/letters/lower/brown/k.png",
+                        "green": "../assets/letters/lower/green/k.png",
+                        "red": "../assets/letters/lower/red/k.png",
+                        "black": "../assets/letters/lower/black/k.png"
+                    }
+                },
+                lines: [
+                    "█▎   ",
+                    "█▎   ",
+                    "█◢▊◤",
+                    "█◥▊◣"
+                ]
+            },
+            "l": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/l.png",
+                        "orange": "../assets/letters/lower/orange/l.png",
+                        "magenta": "../assets/letters/lower/magenta/l.png",
+                        "light_blue": "../assets/letters/lower/light_blue/l.png",
+                        "yellow": "../assets/letters/lower/yellow/l.png",
+                        "lime": "../assets/letters/lower/lime/l.png",
+                        "pink": "../assets/letters/lower/pink/l.png",
+                        "gray": "../assets/letters/lower/gray/l.png",
+                        "light_gray": "../assets/letters/lower/light_gray/l.png",
+                        "cyan": "../assets/letters/lower/cyan/l.png",
+                        "purple": "../assets/letters/lower/purple/l.png",
+                        "blue": "../assets/letters/lower/blue/l.png",
+                        "brown": "../assets/letters/lower/brown/l.png",
+                        "green": "../assets/letters/lower/green/l.png",
+                        "red": "../assets/letters/lower/red/l.png",
+                        "black": "../assets/letters/lower/black/l.png"
+                    }
+                },
+                lines: [
+                    "█▎",
+                    "█▎",
+                    "█▎",
+                    "█▎"
+                ]
+            },
+            "m": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/m.png",
+                        "orange": "../assets/letters/lower/orange/m.png",
+                        "magenta": "../assets/letters/lower/magenta/m.png",
+                        "light_blue": "../assets/letters/lower/light_blue/m.png",
+                        "yellow": "../assets/letters/lower/yellow/m.png",
+                        "lime": "../assets/letters/lower/lime/m.png",
+                        "pink": "../assets/letters/lower/pink/m.png",
+                        "gray": "../assets/letters/lower/gray/m.png",
+                        "light_gray": "../assets/letters/lower/light_gray/m.png",
+                        "cyan": "../assets/letters/lower/cyan/m.png",
+                        "purple": "../assets/letters/lower/purple/m.png",
+                        "blue": "../assets/letters/lower/blue/m.png",
+                        "brown": "../assets/letters/lower/brown/m.png",
+                        "green": "../assets/letters/lower/green/m.png",
+                        "red": "../assets/letters/lower/red/m.png",
+                        "black": "../assets/letters/lower/black/m.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "▊◣◣◢▊◣",
+                    "█◥◤▊▊",
+                    "█  ▎▊▊"
+                ]
+            },
+            "n": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/n.png",
+                        "orange": "../assets/letters/lower/orange/n.png",
+                        "magenta": "../assets/letters/lower/magenta/n.png",
+                        "light_blue": "../assets/letters/lower/light_blue/n.png",
+                        "yellow": "../assets/letters/lower/yellow/n.png",
+                        "lime": "../assets/letters/lower/lime/n.png",
+                        "pink": "../assets/letters/lower/pink/n.png",
+                        "gray": "../assets/letters/lower/gray/n.png",
+                        "light_gray": "../assets/letters/lower/light_gray/n.png",
+                        "cyan": "../assets/letters/lower/cyan/n.png",
+                        "purple": "../assets/letters/lower/purple/n.png",
+                        "blue": "../assets/letters/lower/blue/n.png",
+                        "brown": "../assets/letters/lower/brown/n.png",
+                        "green": "../assets/letters/lower/green/n.png",
+                        "red": "../assets/letters/lower/red/n.png",
+                        "black": "../assets/letters/lower/black/n.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "▊◣▀▊◣",
+                    "█  ▏█",
+                    "█  ▏█"
+                ]
+            },
+            "o": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/o.png",
+                        "orange": "../assets/letters/lower/orange/o.png",
+                        "magenta": "../assets/letters/lower/magenta/o.png",
+                        "light_blue": "../assets/letters/lower/light_blue/o.png",
+                        "yellow": "../assets/letters/lower/yellow/o.png",
+                        "lime": "../assets/letters/lower/lime/o.png",
+                        "pink": "../assets/letters/lower/pink/o.png",
+                        "gray": "../assets/letters/lower/gray/o.png",
+                        "light_gray": "../assets/letters/lower/light_gray/o.png",
+                        "cyan": "../assets/letters/lower/cyan/o.png",
+                        "purple": "../assets/letters/lower/purple/o.png",
+                        "blue": "../assets/letters/lower/blue/o.png",
+                        "brown": "../assets/letters/lower/brown/o.png",
+                        "green": "../assets/letters/lower/green/o.png",
+                        "red": "../assets/letters/lower/red/o.png",
+                        "black": "../assets/letters/lower/black/o.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "◢▊▀▊◣",
+                    "█  ▏█",
+                    "◥▊▄▊◤"
+                ]
+            },
+            "p": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/p.png",
+                        "orange": "../assets/letters/lower/orange/p.png",
+                        "magenta": "../assets/letters/lower/magenta/p.png",
+                        "light_blue": "../assets/letters/lower/light_blue/p.png",
+                        "yellow": "../assets/letters/lower/yellow/p.png",
+                        "lime": "../assets/letters/lower/lime/p.png",
+                        "pink": "../assets/letters/lower/pink/p.png",
+                        "gray": "../assets/letters/lower/gray/p.png",
+                        "light_gray": "../assets/letters/lower/light_gray/p.png",
+                        "cyan": "../assets/letters/lower/cyan/p.png",
+                        "purple": "../assets/letters/lower/purple/p.png",
+                        "blue": "../assets/letters/lower/blue/p.png",
+                        "brown": "../assets/letters/lower/brown/p.png",
+                        "green": "../assets/letters/lower/green/p.png",
+                        "red": "../assets/letters/lower/red/p.png",
+                        "black": "../assets/letters/lower/black/p.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "█▀▊◣",
+                    "█▄▊◤",
+                    "█▎    "
+                ]
+            },
+            "q": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/q.png",
+                        "orange": "../assets/letters/lower/orange/q.png",
+                        "magenta": "../assets/letters/lower/magenta/q.png",
+                        "light_blue": "../assets/letters/lower/light_blue/q.png",
+                        "yellow": "../assets/letters/lower/yellow/q.png",
+                        "lime": "../assets/letters/lower/lime/q.png",
+                        "pink": "../assets/letters/lower/pink/q.png",
+                        "gray": "../assets/letters/lower/gray/q.png",
+                        "light_gray": "../assets/letters/lower/light_gray/q.png",
+                        "cyan": "../assets/letters/lower/cyan/q.png",
+                        "purple": "../assets/letters/lower/purple/q.png",
+                        "blue": "../assets/letters/lower/blue/q.png",
+                        "brown": "../assets/letters/lower/brown/q.png",
+                        "green": "../assets/letters/lower/green/q.png",
+                        "red": "../assets/letters/lower/red/q.png",
+                        "black": "../assets/letters/lower/black/q.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "◢▊▀█",
+                    "◥▊▄█",
+                    "    ▍█"
+                ]
+            },
+            "r": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/r.png",
+                        "orange": "../assets/letters/lower/orange/r.png",
+                        "magenta": "../assets/letters/lower/magenta/r.png",
+                        "light_blue": "../assets/letters/lower/light_blue/r.png",
+                        "yellow": "../assets/letters/lower/yellow/r.png",
+                        "lime": "../assets/letters/lower/lime/r.png",
+                        "pink": "../assets/letters/lower/pink/r.png",
+                        "gray": "../assets/letters/lower/gray/r.png",
+                        "light_gray": "../assets/letters/lower/light_gray/r.png",
+                        "cyan": "../assets/letters/lower/cyan/r.png",
+                        "purple": "../assets/letters/lower/purple/r.png",
+                        "blue": "../assets/letters/lower/blue/r.png",
+                        "brown": "../assets/letters/lower/brown/r.png",
+                        "green": "../assets/letters/lower/green/r.png",
+                        "red": "../assets/letters/lower/red/r.png",
+                        "black": "../assets/letters/lower/black/r.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "▊◣▀▊◣",
+                    "█▏  ▀",
+                    "█▎    "
+                ]
+            },
+            "s": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/s.png",
+                        "orange": "../assets/letters/lower/orange/s.png",
+                        "magenta": "../assets/letters/lower/magenta/s.png",
+                        "light_blue": "../assets/letters/lower/light_blue/s.png",
+                        "yellow": "../assets/letters/lower/yellow/s.png",
+                        "lime": "../assets/letters/lower/lime/s.png",
+                        "pink": "../assets/letters/lower/pink/s.png",
+                        "gray": "../assets/letters/lower/gray/s.png",
+                        "light_gray": "../assets/letters/lower/light_gray/s.png",
+                        "cyan": "../assets/letters/lower/cyan/s.png",
+                        "purple": "../assets/letters/lower/purple/s.png",
+                        "blue": "../assets/letters/lower/blue/s.png",
+                        "brown": "../assets/letters/lower/brown/s.png",
+                        "green": "../assets/letters/lower/green/s.png",
+                        "red": "../assets/letters/lower/red/s.png",
+                        "black": "../assets/letters/lower/black/s.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "◢▊▀▄",
+                    "▀▄",
+                    "▀▄▊◤"
+                ]
+            },
+            "t": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/t.png",
+                        "orange": "../assets/letters/lower/orange/t.png",
+                        "magenta": "../assets/letters/lower/magenta/t.png",
+                        "light_blue": "../assets/letters/lower/light_blue/t.png",
+                        "yellow": "../assets/letters/lower/yellow/t.png",
+                        "lime": "../assets/letters/lower/lime/t.png",
+                        "pink": "../assets/letters/lower/pink/t.png",
+                        "gray": "../assets/letters/lower/gray/t.png",
+                        "light_gray": "../assets/letters/lower/light_gray/t.png",
+                        "cyan": "../assets/letters/lower/cyan/t.png",
+                        "purple": "../assets/letters/lower/purple/t.png",
+                        "blue": "../assets/letters/lower/blue/t.png",
+                        "brown": "../assets/letters/lower/brown/t.png",
+                        "green": "../assets/letters/lower/green/t.png",
+                        "red": "../assets/letters/lower/red/t.png",
+                        "black": "../assets/letters/lower/black/t.png"
+                    }
+                },
+                lines: [
+                    "  ▏█▏ ",
+                    " ▀█▀",
+                    "  ▏█▏ ",
+                    "   ▏█▄"
+                ]
+            },
+            "u": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/u.png",
+                        "orange": "../assets/letters/lower/orange/u.png",
+                        "magenta": "../assets/letters/lower/magenta/u.png",
+                        "light_blue": "../assets/letters/lower/light_blue/u.png",
+                        "yellow": "../assets/letters/lower/yellow/u.png",
+                        "lime": "../assets/letters/lower/lime/u.png",
+                        "pink": "../assets/letters/lower/pink/u.png",
+                        "gray": "../assets/letters/lower/gray/u.png",
+                        "light_gray": "../assets/letters/lower/light_gray/u.png",
+                        "cyan": "../assets/letters/lower/cyan/u.png",
+                        "purple": "../assets/letters/lower/purple/u.png",
+                        "blue": "../assets/letters/lower/blue/u.png",
+                        "brown": "../assets/letters/lower/brown/u.png",
+                        "green": "../assets/letters/lower/green/u.png",
+                        "red": "../assets/letters/lower/red/u.png",
+                        "black": "../assets/letters/lower/black/u.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "█  ▏█",
+                    "█  ▏█",
+                    "◥▊▄█"
+                ]
+            },
+            "v": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/v.png",
+                        "orange": "../assets/letters/lower/orange/v.png",
+                        "magenta": "../assets/letters/lower/magenta/v.png",
+                        "light_blue": "../assets/letters/lower/light_blue/v.png",
+                        "yellow": "../assets/letters/lower/yellow/v.png",
+                        "lime": "../assets/letters/lower/lime/v.png",
+                        "pink": "../assets/letters/lower/pink/v.png",
+                        "gray": "../assets/letters/lower/gray/v.png",
+                        "light_gray": "../assets/letters/lower/light_gray/v.png",
+                        "cyan": "../assets/letters/lower/cyan/v.png",
+                        "purple": "../assets/letters/lower/purple/v.png",
+                        "blue": "../assets/letters/lower/blue/v.png",
+                        "brown": "../assets/letters/lower/brown/v.png",
+                        "green": "../assets/letters/lower/green/v.png",
+                        "red": "../assets/letters/lower/red/v.png",
+                        "black": "../assets/letters/lower/black/v.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "█  ▏█",
+                    "◥▊◣◢▏▎◤",
+                    "◥▌▊◤"
+                ]
+            },
+            "w": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/w.png",
+                        "orange": "../assets/letters/lower/orange/w.png",
+                        "magenta": "../assets/letters/lower/magenta/w.png",
+                        "light_blue": "../assets/letters/lower/light_blue/w.png",
+                        "yellow": "../assets/letters/lower/yellow/w.png",
+                        "lime": "../assets/letters/lower/lime/w.png",
+                        "pink": "../assets/letters/lower/pink/w.png",
+                        "gray": "../assets/letters/lower/gray/w.png",
+                        "light_gray": "../assets/letters/lower/light_gray/w.png",
+                        "cyan": "../assets/letters/lower/cyan/w.png",
+                        "purple": "../assets/letters/lower/purple/w.png",
+                        "blue": "../assets/letters/lower/blue/w.png",
+                        "brown": "../assets/letters/lower/brown/w.png",
+                        "green": "../assets/letters/lower/green/w.png",
+                        "red": "../assets/letters/lower/red/w.png",
+                        "black": "../assets/letters/lower/black/w.png"
+                    }
+                },
+                lines: [
+                    "   ",
+                    "█  ▎▊▊",
+                    "█◢◣▊▊",
+                    "█◤◥▊▊"
+                ]
+            },
+            "x": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/x.png",
+                        "orange": "../assets/letters/lower/orange/x.png",
+                        "magenta": "../assets/letters/lower/magenta/x.png",
+                        "light_blue": "../assets/letters/lower/light_blue/x.png",
+                        "yellow": "../assets/letters/lower/yellow/x.png",
+                        "lime": "../assets/letters/lower/lime/x.png",
+                        "pink": "../assets/letters/lower/pink/x.png",
+                        "gray": "../assets/letters/lower/gray/x.png",
+                        "light_gray": "../assets/letters/lower/light_gray/x.png",
+                        "cyan": "../assets/letters/lower/cyan/x.png",
+                        "purple": "../assets/letters/lower/purple/x.png",
+                        "blue": "../assets/letters/lower/blue/x.png",
+                        "brown": "../assets/letters/lower/brown/x.png",
+                        "green": "../assets/letters/lower/green/x.png",
+                        "red": "../assets/letters/lower/red/x.png",
+                        "black": "../assets/letters/lower/black/x.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "◥▊◣◢▏▎◤",
+                    "  ▌▌▏  ",
+                    "◢▊◤◥▏▎◣"
+                ]
+            },
+            "y": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/y.png",
+                        "orange": "../assets/letters/lower/orange/y.png",
+                        "magenta": "../assets/letters/lower/magenta/y.png",
+                        "light_blue": "../assets/letters/lower/light_blue/y.png",
+                        "yellow": "../assets/letters/lower/yellow/y.png",
+                        "lime": "../assets/letters/lower/lime/y.png",
+                        "pink": "../assets/letters/lower/pink/y.png",
+                        "gray": "../assets/letters/lower/gray/y.png",
+                        "light_gray": "../assets/letters/lower/light_gray/y.png",
+                        "cyan": "../assets/letters/lower/cyan/y.png",
+                        "purple": "../assets/letters/lower/purple/y.png",
+                        "blue": "../assets/letters/lower/blue/y.png",
+                        "brown": "../assets/letters/lower/brown/y.png",
+                        "green": "../assets/letters/lower/green/y.png",
+                        "red": "../assets/letters/lower/red/y.png",
+                        "black": "../assets/letters/lower/black/y.png"
+                    }
+                },
+                lines: [
+                    "",
+                    " ◥▊◣◢▏▎◤",
+                    " ◥█◤",
+                    " ◢▏▊◤  "
+                ]
+            },
+            "z": {
+                preview: {
+                    colors: {
+                        "white": "../assets/letters/lower/white/z.png",
+                        "orange": "../assets/letters/lower/orange/z.png",
+                        "magenta": "../assets/letters/lower/magenta/z.png",
+                        "light_blue": "../assets/letters/lower/light_blue/z.png",
+                        "yellow": "../assets/letters/lower/yellow/z.png",
+                        "lime": "../assets/letters/lower/lime/z.png",
+                        "pink": "../assets/letters/lower/pink/z.png",
+                        "gray": "../assets/letters/lower/gray/z.png",
+                        "light_gray": "../assets/letters/lower/light_gray/z.png",
+                        "cyan": "../assets/letters/lower/cyan/z.png",
+                        "purple": "../assets/letters/lower/purple/z.png",
+                        "blue": "../assets/letters/lower/blue/z.png",
+                        "brown": "../assets/letters/lower/brown/z.png",
+                        "green": "../assets/letters/lower/green/z.png",
+                        "red": "../assets/letters/lower/red/z.png",
+                        "black": "../assets/letters/lower/black/z.png"
+                    }
+                },
+                lines: [
+                    "",
+                    "▀▀▊◤",
+                    "  ◢◤  ",
+                    "◢▊▄▄"
+                ]
+            }
+        };
+
+        // Input Listener
+        const textInput = document.getElementById('textInput');
+        const container = document.getElementById('signsContainer');
+        const previewContainer = document.getElementById('ingameContainer');
+
+        textInput.addEventListener('input', function() {
+            updateSigns(this.value);
+        });
+
+        function updateSigns(text) {
+            container.innerHTML = ''; // Clear signs
+            previewContainer.innerHTML = ''; // Clear preview
+
+            let hasPreview = false;
+
+            for (let char of text) {
+                let key = char;
+                // If not found, try space or just skip
+                if(!fonts[key]) {
+                    if(char === " ") key = " ";
+                    else continue; 
+                }
+
+                let charData = fonts[key];
+                
+                // --- 1. PREVIEW LOGIC ---
+                // Check if preview object exists and has colors map
+                if(charData.preview && charData.preview.colors) {
+                    const img = document.createElement('img');
+                    img.className = 'ingame-preview-img';
+                    img.title = key;
+                    img.crossOrigin = "Anonymous"; 
+
+                    // Get base URL for selected color
+                    // Note: selectedColor variable matches keys in fonts object (e.g. "red")
+                    let url = charData.preview.colors[selectedColor];
+
+                    // Apply Glow if enabled
+                    if (glowEnabled) {
+                        url = url.replace('.png', '_glow.png');
+                    }
+
+                    img.src = url;
+
+                    // Fallback Logic
+                    img.onerror = function() {
+                        // Prevent infinite loop
+                        if (this.getAttribute('data-fallback') === 'true') return;
+                        this.setAttribute('data-fallback', 'true');
+
+                        // Try fallback to black variant
+                        // 'black' is the key for black color in our fonts structure
+                        let blackUrl = charData.preview.colors['black'];
+                        
+                        // Apply glow to fallback if needed
+                        if (glowEnabled) {
+                            blackUrl = blackUrl.replace('.png', '_glow.png');
+                        }
+                        
+                        if (this.src !== blackUrl) {
+                            this.src = blackUrl;
+                        }
+                    };
+                    
+                    previewContainer.appendChild(img);
+                    hasPreview = true;
+                }
+
+                // --- 2. SIGN LOGIC ---
+                let row1, row2, row3, row4;
+                if(charData.lines.length === 3) {
+                    row1 = ""; row2 = charData.lines[0]; row3 = charData.lines[1]; row4 = charData.lines[2];
+                } else if (charData.lines.length >= 4) {
+                    row1 = charData.lines[0] || "";
+                    row2 = charData.lines[1] || "";
+                    row3 = charData.lines[2] || "";
+                    row4 = charData.lines[3] || "";
+                } else {
+                    row1=row2=row3=row4="";
+                }
+                
+                // Create Sign Element
+                const signEl = document.createElement('div');
+                signEl.className = 'sign-wrapper';
+
+                // NEW: Character Label
+                const charLabel = document.createElement('div');
+                charLabel.className = 'sign-char-label';
+                charLabel.textContent = key === " " ? "[Space]" : key; // Handle space visibility
+                signEl.appendChild(charLabel);
+                
+                const textContainer = document.createElement('div');
+                textContainer.className = 'sign-text-container';
+                
+                const lines = [row1, row2, row3, row4];
+                lines.forEach((lineText, idx) => {
+                    const lineDiv = document.createElement('div');
+                    lineDiv.className = 'sign-line';
+                    
+                    const displayText = (lineText === "" || lineText === undefined) ? " " : lineText;
+                    lineDiv.textContent = displayText; 
+                    
+                    // APPLY COLOR & GLOW TO TEXT
+                    const activeColorData = colors[selectedColor];
+
+                    if(glowEnabled) {
+                        lineDiv.style.color = activeColorData.color; // Lit color
+                        const gc = activeColorData.glowColor; // Outline color
+                        lineDiv.style.textShadow = `
+                            3px 0 0 ${gc}, -3px 0 0 ${gc}, 0 3px 0 ${gc}, 0 -3px 0 ${gc},
+                            2px 2px 0 ${gc}, -2px -2px 0 ${gc}, 2px -2px 0 ${gc}, -2px 2px 0 ${gc},
+                            1px 1px 0 ${gc}, -1px -1px 0 ${gc}, 1px -1px 0 ${gc}, -1px 1px 0 ${gc}
+                        `;
+                    } else {
+                        // Exception for black/default: Unlit text is black (#000000), not the glowColor (#ede8ca)
+                        if (selectedColor === 'black' || selectedColor === 'default') {
+                            lineDiv.style.color = "#000000";
+                        } else {
+                            lineDiv.style.color = activeColorData.glowColor; // Unlit color
+                        }
+                        lineDiv.style.textShadow = "none";
+                    }
+
+                    lineDiv.addEventListener('click', () => {
+                        copyText(lineText);
+                    });
+                    textContainer.appendChild(lineDiv);
+                });
+
+                signEl.appendChild(textContainer);
+                container.appendChild(signEl);
+            }
+
+            if(!hasPreview && text.length > 0) {
+                 previewContainer.innerHTML = '<div style="opacity:0.5; font-size: 12px;">No in-game previews available for these characters yet.</div>';
+            } else if (text.length === 0) {
+                 previewContainer.innerHTML = '<div style="opacity:0.5; font-size: 12px;">Type above to see previews (if available)</div>';
+            }
+        }
+
+        // Generic Copy Function
+        function copyText(text) {
+            if(!text && text !== "") return; 
+            
+            navigator.clipboard.writeText(text).then(() => {
+                triggerCopyAnimation();
+            }).catch(err => {
+                showErrorPopup("Could not copy text: " + err);
+            });
+        }
+
+        function triggerCopyAnimation() {
+            const popup = document.getElementById('copy-notification');
+            
+            // Reset animation
+            popup.classList.remove('animate-popup');
+            void popup.offsetWidth; // Trigger reflow
+            popup.classList.add('animate-popup');
+        }
+
+        // Ko-fi Widget
+        if (typeof kofiWidgetOverlay !== 'undefined') {
+            kofiWidgetOverlay.draw('alonsoaliaga', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Send love ❤️',
+                'floating-chat.donateButton.background-color': '#fcbf47',
+                'floating-chat.donateButton.text-color': '#323842'
+            });
+        }
+
+        // --- Dark Mode Logic ---
+        const darkModeCheck = document.getElementById('darkModeCheck');
+        const body = document.body;
+
+        darkModeCheck.addEventListener('change', () => {
+            if (darkModeCheck.checked) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+        });
+
+        // --- Error Popup Logic ---
+        function showErrorPopup(msg = "Unknown Error") {
+            const el = document.getElementById('errorPopup');
+            document.getElementById('errorMsg').textContent = msg;
+            el.classList.add('show');
+            setTimeout(() => {
+                el.classList.remove('show');
+            }, 4000); 
+        }
+
+        // --- SITE CHECKER & TOOLS LOADER ---
+        function checkSite(window) {
+            fetch('https://raw.githubusercontent.com/AlonsoAliaga/AlonsoAliagaAPI/refs/heads/main/api/tools/tools-list.json')
+                .then(res => res.json())
+                .then(content => {
+                    let toolsData = content;
+                    let toolsArray = []
+                    for(let toolData of toolsData) {
+                        let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
+                        let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
+                        toolsArray.push(`<span>💠</span> <span${clazz}${style}><a title="${toolData.description}" id="tool-priority-${toolData.priority}" href="${toolData.link}" target="_blank">${toolData.name}</a></span>`);
+                    }
+                    document.getElementById("tools-for-you").innerHTML = toolsArray.join(`<br>`);
+            }).catch(err => console.log("Tools fetch error:", err));
+            setTimeout(()=>{if(typeof window.getRandomStyle == "undefined" || myTimeout != undefined || typeof adBlockEnabled == "undefined" || adBlockEnabled) processAds()},1500);
+            setTimeout(()=>{let href = window.location.href;if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/sign-generator/`}});
+        }
+
+        // --- ONLINE CHECKER SCRIPT ---
+        function loadChecking() {
+            let href = window.location.href;
+            if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
+                return;
+            }
+            // UPDATE "site" parameter below to your new tool name
+            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5PiZsb2NrPTxsb2NrPg==")
+                .replace(/<site>/g,"sign-generator").replace(/<key>/g,"KEY-A")
+                .replace(/<lock>/g,(typeof window.getRandomStyle == "undefined" || myTimeout != undefined || typeof adBlockEnabled == "undefined" || adBlockEnabled) ? "yes" : "no");
+            
+            let counter = document.getElementById("online-counter");
+            
+            if(counter) {
+                $.ajax({
+                    url: link,
+                    type: "GET", 
+                    dataType: "json",
+                    data: {},
+                    success: function (result) {
+                        counter.dataset.failed = "0";
+                        counter.style.display = "flex";
+                        if(isNaN(result)) {
+                            counter.textContent = `🟡 Report issues on Discord.`;
+                            counter.style.backgroundColor = "yellow";
+                            counter.style.color = "black";
+                        } else {
+                            // UPDATE text below
+                            counter.textContent = `🟢 ${result} online using our Tool!`;
+                            counter.style.backgroundColor = "green";
+                            counter.style.color = "white";
+                        }
+                    },
+                    error: function (e) {
+                        if(counter.style.display != "none") {
+                            let currentFails = +counter.dataset.failed || 0;
+                            if(currentFails >= 1){
+                                counter.style.display = "none"
+                            } else {
+                                counter.textContent = `🔴 Check your internet connection!`;
+                                counter.style.backgroundColor = "#7c0000";
+                                counter.dataset.failed = `${currentFails + 1}`
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        // --- VISITOR COUNTER SCRIPT ---
+        let times = 0;
+        function loadCounter() {
+            let href = window.location.href;
+            if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
+                return;
+            }
+            // UPDATE "site" parameter below
+            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NvdW50ZXI/c2l0ZT08c2l0ZT4ma2V5PTxrZXk+")
+            .replace(/<site>/g,"sign-generator").replace(/<key>/g,"KEY-A");
+            let counter = document.getElementById("visitor-counter");
+            
+            if(counter) {
+            $.ajax({
+                url: link,
+                type: "GET", 
+                dataType: "json",
+                data: {},
+                success: function (result) {
+                    if(isNaN(result))
+                        document.getElementById("counter-amount").innerHTML = "Click to return!";
+                    else document.getElementById("counter-amount").innerHTML = `Visits: ${result}`;
+                },
+                error: function (e) {
+                    times++;
+                    document.getElementById("counter-amount").innerHTML = "Click to return!";
+                    if(times <= 1) {
+                        setTimeout(()=>{
+                        loadCounter();
+                        },1000*10);
+                    }
+                }
+            });
+            }
+        }
+
+        function processAds() {
+            isDraggedEnabled = true;
+            
+            // 1. Block Color Selector
+            const colorFieldset = document.getElementById('color-selector');
+            if(colorFieldset) {
+                colorFieldset.style.position = 'relative'; 
+                
+                let overlayColor = document.createElement('div');
+                overlayColor.className = 'blocked-overlay';
+                overlayColor.innerHTML = '<span>🔒 Disable AdBlock to be able to test colors!</span>';
+                colorFieldset.appendChild(overlayColor);
+            }
+            
+            // 2. Block In-Game Preview
+            const previewFieldset = document.getElementById('ingame-preview');
+            if(previewFieldset) {
+                previewFieldset.style.position = 'relative';
+                
+                let overlayPreview = document.createElement('div');
+                overlayPreview.className = 'blocked-overlay darker'; 
+                overlayPreview.innerHTML = '<span>🔒 Disable AdBlock to be able to preview in game signs!</span>';
+                previewFieldset.appendChild(overlayPreview);
+            }
+            
+            // Limit height
+            const ingameContainer = document.getElementById('ingameContainer');
+            if(ingameContainer) {
+                ingameContainer.style.maxHeight = '100px';
+                ingameContainer.style.overflow = 'hidden';
+            }
+            layer();
+        }
+        let myTimeout;
+        // --- COLOR SELECTION LOGIC ---
+        function setupColorSelector() {
+            const container = document.getElementById('dyeContainer');
+            
+            // Add Dye Buttons
+            for (let key in colors) {
+                let colorData = colors[key];
+                let btn = document.createElement('div');
+                btn.className = 'dye-btn' + (key === selectedColor ? ' active' : '');
+                btn.onclick = () => selectColor(key);
+                
+                let img = document.createElement('img');
+                img.src = colorData.icon;
+                img.title = key.charAt(0).toUpperCase() + key.slice(1);
+                
+                btn.appendChild(img);
+                container.appendChild(btn);
+            }
+            
+            let separator = document.createElement('div');
+            separator.style.cssText = "width: 2px; height: 40px; background: var(--border-color); margin: 0 10px;";
+            container.appendChild(separator);
+
+            // Add Glow Button (Glow Ink Sac)
+            let glowBtn = document.createElement('div');
+            glowBtn.className = 'glow-btn';
+            glowBtn.id = 'glowToggleBtn';
+            glowBtn.onclick = toggleGlow;
+            
+            let glowImg = document.createElement('img');
+            glowImg.src = "https://minecraft.wiki/images/Invicon_Glow_Ink_Sac.png";
+            glowImg.style.width = "32px";
+            glowImg.style.height = "32px";
+            glowImg.style.imageRendering = "pixelated";
+            
+            glowBtn.appendChild(glowImg);
+            container.appendChild(glowBtn);
+        }
+
+        function selectColor(key) {
+            if (isDraggedEnabled) return; // Prevent selection if AdBlock detected
+            
+            selectedColor = key;
+            const container = document.getElementById('dyeContainer');
+            // Update Active Dye Class
+            const dyes = container.getElementsByClassName('dye-btn');
+            Array.from(dyes).forEach((btn, index) => {
+                const btnKey = Object.keys(colors)[index];
+                if(btnKey === key) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            updateSigns(document.getElementById('textInput').value);
+        }
+
+        function toggleGlow() {
+            if (isDraggedEnabled) return; // Prevent toggle if AdBlock detected
+
+            glowEnabled = !glowEnabled;
+            const btn = document.getElementById('glowToggleBtn');
+            if(glowEnabled) btn.classList.add('active');
+            else btn.classList.remove('active');
+            
+            updateSigns(document.getElementById('textInput').value);
+        }
+
+        // --- INITIALIZATION ---
+        window.addEventListener('load',() => {
+            checkSite(window); 
+            loadCounter(); 
+            setupColorSelector(); // Init colors and glow toggle
+            
+            // Run initial update for "Hola"
+            updateSigns("AlonsoAliaga");
+            console.log("Template Loaded");
+            setTimeout(()=>{
+                loadChecking();
+                setInterval(()=>{
+                    loadChecking();
+                },10000)
+            }, 100);
+        });
+
+
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065" crossorigin="anonymous"></script>
+    <script>
+      async function layer(){
+      const config={url:atob('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fsb25zb0FsaWFnYS9BbG9uc29BbGlhZ2FBUEkvcmVmcy9oZWFkcy9tYWluL2FwaS9hZHMvYWRzLmpzb24='),rotate:true,targetClasses:['.profile_input_label','.profile_auth','.profile_base','.minecraft_auth']};
+      const style=document.createElement('style');
+      style.innerHTML=`.aa-promo-box{background:#ffffff;border:1px solid #e0e0e0;box-shadow:0 1px 3px rgba(0,0,0,0.06);font-family:Arial,sans-serif;text-decoration:none;display:flex;flex-direction:column;box-sizing:border-box;padding:10px;border-radius:4px;transition:box-shadow 0.2s;overflow:hidden;width:100%;margin:0 auto;}.aa-promo-box:hover{box-shadow:0 4px 8px rgba(0,0,0,0.12);}.aa-promo-box[data-theme="dark"]{background:#2b2d31;border:1px solid #1e1f22;}.aa-promo-box[data-theme="dark"] .aa-promo-title{color:#5865F2;}.aa-promo-box[data-theme="dark"] .aa-promo-desc{color:#dbdee1;}.aa-promo-box[data-theme="dark"] .aa-sponsor-tag{color:#949ba4;}.aa-media-wrapper{text-align:center;margin-bottom:8px;display:flex;justify-content:center;align-items:center;min-height:0;}.aa-media-content{max-width:100%;max-height:100%;object-fit:contain;display:block;}.aa-text-wrapper{text-align:left;flex-shrink:1;}.aa-promo-horizontal{flex-direction:row!important;align-items:center;justify-content:space-between;padding:10px 15px;}.aa-promo-horizontal .aa-text-wrapper{order:1;margin-right:15px;display:flex;flex-direction:column;justify-content:center;}.aa-promo-horizontal .aa-media-wrapper{order:2;margin-bottom:0;height:100%;justify-content:flex-end;}.aa-sponsor-tag{font-size:10px;color:#70757a;margin-bottom:4px;display:block;}.aa-promo-title{color:#1a0dab;font-size:clamp(13px,3vw,14px);font-weight:normal;margin:0 0 4px 0;line-height:1.3;}.aa-promo-desc{color:#4d5156;font-size:clamp(12px,2.5vw,13px);margin:0;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}`;
+      document.head.appendChild(style);
+      try{const response=await fetch(config.url+'?t='+Date.now());let promos=await response.json();if(promos.length===0)return;if(!config.rotate)promos.sort((a,b)=>a.Priority-b.Priority);const targetElements=document.querySelectorAll(config.targetClasses.join(', '));let promoIndex=0;targetElements.forEach(container=>{let promo=config.rotate?promos[Math.floor(Math.random()*promos.length)]:promos[promoIndex%promos.length];if(!config.rotate)promoIndex++;const maxWidth=container.getAttribute('data-max-width'),maxHeight=container.getAttribute('data-max-height'),theme=container.getAttribute('data-theme'),layout=container.getAttribute('data-layout'),tSize=container.getAttribute('data-text-size')||"55",mSize=container.getAttribute('data-media-size')||"40";const promoLink=document.createElement('a');promoLink.href=promo.Link;promoLink.target='_blank';promoLink.className='aa-promo-box';if(theme)promoLink.setAttribute('data-theme',theme);if(maxWidth)promoLink.style.maxWidth=maxWidth;let isHorizontal=false;const hVal=maxHeight?parseInt(maxHeight.replace(/\D/g,'')):null,wVal=maxWidth?parseInt(maxWidth.replace(/\D/g,'')):null;if(layout==='horizontal')isHorizontal=true;else if(layout==='vertical')isHorizontal=false;else{if(hVal&&hVal<=160)isHorizontal=true;else if(!maxHeight&&!maxWidth){isHorizontal=true;promoLink.style.maxHeight='140px';}if(wVal&&wVal<250)isHorizontal=false;}if(isHorizontal)promoLink.classList.add('aa-promo-horizontal');const imgWrap=document.createElement('div');imgWrap.className='aa-media-wrapper';if(isHorizontal)imgWrap.style.width=mSize+'%';const img=document.createElement('img');img.src=promo.Image+(promo.Image.includes('?')?'&':'?')+'t='+Date.now();img.className='aa-media-content';if(!maxHeight&&!isHorizontal)img.style.maxHeight='150px';imgWrap.appendChild(img);const textWrap=document.createElement('div');textWrap.className='aa-text-wrapper';if(isHorizontal)textWrap.style.width=tSize+'%';const badge=document.createElement('span');badge.className='aa-sponsor-tag';badge.innerText='Patrocinado';const title=document.createElement('h3');title.className='aa-promo-title';title.innerText=promo.Title;const desc=document.createElement('p');desc.className='aa-promo-desc';desc.innerText=promo.Lines.join(' ');textWrap.appendChild(badge);textWrap.appendChild(title);textWrap.appendChild(desc);promoLink.appendChild(imgWrap);promoLink.appendChild(textWrap);if(maxHeight)promoLink.style.maxHeight=maxHeight;container.style.display='block';container.style.width='100%';container.innerHTML='';container.appendChild(promoLink);});}catch(e){console.error('Error:',e);}};
+    </script>
+    <script src="resources.js?v=547" onerror="myTimeout='inline-block';processAds()"></script>
+</body>
+</html>
