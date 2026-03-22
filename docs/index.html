@@ -2561,7 +2561,14 @@
             setTimeout(()=>{if(typeof window.getRandomStyle == "undefined" || myTimeout != undefined || typeof adBlockEnabled == "undefined" || adBlockEnabled) processAds()},1500);
             setTimeout(()=>{let href = window.location.href;if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/sign-generator/`}});
         }
-
+        let options = [
+            `🟢 <count> online spelling it out, one sign at a time!`,
+            `🟢 <count> currently placing one letter per sign!`,
+            `🟢 <count> players mapping out custom ASCII sign text!`,
+            `🟢 <count> builders setting up huge server announcements!`,
+            `🟢 <count> online typing in giant Minecraft letters!`
+        ]
+        let text = options[Math.floor(Math.random() * options.length)]
         // --- ONLINE CHECKER SCRIPT ---
         function loadChecking() {
             let href = window.location.href;
@@ -2590,7 +2597,7 @@
                             counter.style.color = "black";
                         } else {
                             // UPDATE text below
-                            counter.textContent = `🟢 ${result} online using our Tool!`;
+                            counter.textContent = text.replace(/<count>/g, result);
                             counter.style.backgroundColor = "green";
                             counter.style.color = "white";
                         }
